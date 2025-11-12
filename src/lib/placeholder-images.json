@@ -1,3 +1,118 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "about_brisa",
+      "description": "A portrait of the illustrator, Brisa Parra",
+      "imageUrl": "https://images.unsplash.com/photo-1719835491963-11c9ebd007f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxpbGx1c3RyYXRvciUyMHBvcnRyYWl0fGVufDB8fHx8MTc2Mjk3OTA5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "illustrator portrait"
+    },
+    {
+      "id": "vegetal_1",
+      "description": "An illustration for the 'Mi yo vegetal' project",
+      "imageUrl": "https://images.unsplash.com/photo-1748712073377-5c200bf4cbc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwbGFudCUyMGlsbHVzdHJhdGlvbnxlbnwwfHx8fDE3NjI5NzkwOTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "plant illustration"
+    },
+    {
+      "id": "vegetal_2",
+      "description": "Cover art for the 'Mi yo vegetal' book",
+      "imageUrl": "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxib29rJTIwY292ZXJ8ZW58MHx8fHwxNzYyOTEwNjIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "book cover"
+    },
+    {
+      "id": "impulso_1",
+      "description": "Branding asset for Impulso Azul",
+      "imageUrl": "https://images.unsplash.com/photo-1661843599114-922e7fa50df6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBicmFuZGluZ3xlbnwwfHx8fDE3NjI5NzkwOTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tattoo branding"
+    },
+    {
+      "id": "impulso_2",
+      "description": "Pastel-themed branding for Impulso Azul",
+      "imageUrl": "https://images.unsplash.com/photo-1658402995914-22a4ba7e1a94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwYXN0ZWwlMjBicmFuZGluZ3xlbnwwfHx8fDE3NjI5NzkwOTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pastel branding"
+    },
+    {
+      "id": "zelda_1",
+      "description": "Product shot for Zelda Tattoo Supplies",
+      "imageUrl": "https://images.unsplash.com/photo-1761276297550-27567ed50a1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0YXR0b28lMjBzdXBwbGllc3xlbnwwfHx8fDE3NjI5NzkwOTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tattoo supplies"
+    },
+    {
+      "id": "zelda_2",
+      "description": "Logo for Zelda Tattoo Supplies",
+      "imageUrl": "https://images.unsplash.com/photo-1751894051402-7cdb1753a653?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtZWRpY2FsJTIwbG9nb3xlbnwwfHx8fDE3NjI5NzkwOTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "medical logo"
+    },
+    {
+      "id": "gallery_1",
+      "description": "Gallery illustration 1",
+      "imageUrl": "https://images.unsplash.com/photo-1694636306974-dae6dc66472f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxpbGx1c3RyYXRpb24lMjBhcnR8ZW58MHx8fHwxNzYyOTc5MDk3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "illustration art"
+    },
+    {
+      "id": "gallery_2",
+      "description": "Gallery illustration 2",
+      "imageUrl": "https://images.unsplash.com/photo-1744686909443-eb72a54de998?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwcGFpbnRpbmd8ZW58MHx8fHwxNzYyODgzMjM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "digital painting"
+    },
+    {
+      "id": "gallery_3",
+      "description": "Gallery illustration 3",
+      "imageUrl": "https://images.unsplash.com/photo-1732811798242-6d31a6164660?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjaGFyYWN0ZXIlMjBkZXNpZ258ZW58MHx8fHwxNzYyOTU5MDEwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "character design"
+    },
+    {
+      "id": "gallery_4",
+      "description": "Gallery illustration 4",
+      "imageUrl": "https://images.unsplash.com/photo-1549277513-f1b32fe1f8f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsaW5lJTIwYXJ0fGVufDB8fHx8MTc2Mjk3NTkzMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "line art"
+    },
+    {
+      "id": "gallery_5",
+      "description": "Gallery illustration 5",
+      "imageUrl": "https://images.unsplash.com/photo-1741118235609-bf637a4e7d39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmYW50YXN5JTIwYXJ0fGVufDB8fHx8MTc2Mjk3MzMyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fantasy art"
+    },
+    {
+      "id": "gallery_6",
+      "description": "Gallery illustration 6",
+      "imageUrl": "https://images.unsplash.com/photo-1760475267343-4dbc94087161?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxuYXR1cmUlMjBpbGx1c3RyYXRpb258ZW58MHx8fHwxNzYyOTc5MDk3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "nature illustration"
+    },
+    {
+      "id": "gallery_7",
+      "description": "Gallery illustration 7",
+      "imageUrl": "https://images.unsplash.com/photo-1552250575-e508473b090f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGFydHxlbnwwfHx8fDE3NjI4NzczMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract art"
+    },
+    {
+      "id": "gallery_8",
+      "description": "Gallery illustration 8",
+      "imageUrl": "https://images.unsplash.com/photo-1739997698915-15590f82e7ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwb3J0cmFpdCUyMGlsbHVzdHJhdGlvbnxlbnwwfHx8fDE3NjI5NzU1NjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait illustration"
+    },
+    {
+      "id": "gallery_9",
+      "description": "Gallery illustration 9",
+      "imageUrl": "https://images.unsplash.com/photo-1753807005128-e3c8169731c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxib3RhbmljYWwlMjBhcnR8ZW58MHx8fHwxNzYyOTc5MDk3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "botanical art"
+    },
+    {
+      "id": "gallery_10",
+      "description": "Gallery illustration 10",
+      "imageUrl": "https://images.unsplash.com/photo-1633190058366-a7324ee566d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdXJyZWFsJTIwYXJ0fGVufDB8fHx8MTc2Mjk3MjI4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "surreal art"
+    },
+    {
+      "id": "gallery_11",
+      "description": "Gallery illustration 11",
+      "imageUrl": "https://images.unsplash.com/photo-1565359184520-fcff70f99c24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVuY2lsJTIwc2tldGNofGVufDB8fHx8MTc2Mjg4OTM4NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pencil sketch"
+    },
+    {
+      "id": "gallery_12",
+      "description": "Gallery illustration 12",
+      "imageUrl": "https://images.unsplash.com/photo-1713815539197-78db123d8f3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3YXRlcmNvbG9yJTIwcGFpbnRpbmd8ZW58MHx8fHwxNzYyODg5Mzg1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "watercolor painting"
+    }
+  ]
 }
