@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
-import { useCollection, useFirebase, useUser, useMemoFirebase, addDocumentNonBlocking, deleteDocumentNonBlocking } from "@/firebase";
+import { useCollection, useFirebase, useUser, addDocumentNonBlocking, deleteDocumentNonBlocking } from "@/firebase";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { cn } from "@/lib/utils";
@@ -38,8 +38,8 @@ export default function GalleryPage() {
   const [newImageUrl, setNewImageUrl] = useState("");
   const [newImageDescription, setNewImageDescription] = useState("");
 
-  const illustrationsCollection = useMemoFirebase(() => collection(firestore, 'illustrations'), [firestore]);
-  const illustrationsQuery = useMemoFirebase(() => query(illustrationsCollection), [illustrationsCollection]);
+  const illustrationsCollection = useMemo(() => collection(firestore, 'illustrations'), [firestore]);
+  const illustrationsQuery = useMemo(() => query(illustrationsCollection), [illustrationsCollection]);
   
   const { data: allImages, isLoading } = useCollection<Omit<Illustration, 'id'>>(illustrationsQuery);
 

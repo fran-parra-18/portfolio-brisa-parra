@@ -3,13 +3,11 @@
 import Image from "next/image";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { useRef, useState, MouseEvent, useMemo } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useCollection, useMemoFirebase } from "@/firebase";
+import { useCollection, useFirestore } from "@/firebase";
 import { collection, query, limit } from "firebase/firestore";
-import { useFirestore } from "@/firebase/provider";
 
 
 export default function GallerySection() {
@@ -20,8 +18,8 @@ export default function GallerySection() {
   const [scrollLeft, setScrollLeft] = useState(0);
   
   const firestore = useFirestore();
-  const illustrationsCollection = useMemoFirebase(() => collection(firestore, 'illustrations'), [firestore]);
-  const illustrationsQuery = useMemoFirebase(() => query(illustrationsCollection, limit(12)), [illustrationsCollection]);
+  const illustrationsCollection = useMemo(() => collection(firestore, 'illustrations'), [firestore]);
+  const illustrationsQuery = useMemo(() => query(illustrationsCollection, limit(12)), [illustrationsCollection]);
   const { data: galleryImages } = useCollection(illustrationsQuery);
 
   const duplicatedImages = useMemo(() => {
