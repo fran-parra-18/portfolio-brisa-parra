@@ -1,0 +1,156 @@
+{
+  "entities": {
+    "Project": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Project",
+      "type": "object",
+      "description": "Represents a project showcased in the portfolio.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the project."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the project."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the project."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the image representing the project.",
+          "format": "uri"
+        },
+        "projectType": {
+          "type": "string",
+          "description": "Type of project, e.g., 'personal', 'branding'."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "imageUrl",
+        "projectType"
+      ]
+    },
+    "Illustration": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Illustration",
+      "type": "object",
+      "description": "Represents an illustration in the portfolio's gallery.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the illustration."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the illustration image.",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the illustration."
+        }
+      },
+      "required": [
+        "id",
+        "imageUrl"
+      ]
+    },
+    "ContactInfo": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactInfo",
+      "type": "object",
+      "description": "Represents contact information for the illustrator.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the contact information."
+        },
+        "instagramUrl": {
+          "type": "string",
+          "description": "URL to the Instagram profile.",
+          "format": "uri"
+        },
+        "whatsappNumber": {
+          "type": "string",
+          "description": "WhatsApp number for contact."
+        },
+        "emailAddress": {
+          "type": "string",
+          "description": "Email address for contact.",
+          "format": "email"
+        }
+      },
+      "required": [
+        "id",
+        "instagramUrl",
+        "whatsappNumber",
+        "emailAddress"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/projects/{projectId}",
+        "definition": {
+          "entityName": "Project",
+          "schema": {
+            "$ref": "#/backend/entities/Project"
+          },
+          "description": "Stores project information. Each document represents a project showcased in the portfolio.",
+          "params": [
+            {
+              "name": "projectId",
+              "description": "Unique identifier for the project."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/illustrations/{illustrationId}",
+        "definition": {
+          "entityName": "Illustration",
+          "schema": {
+            "$ref": "#/backend/entities/Illustration"
+          },
+          "description": "Stores illustration information. Each document represents an illustration in the portfolio.",
+          "params": [
+            {
+              "name": "illustrationId",
+              "description": "Unique identifier for the illustration."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/contactInfo/{contactInfoId}",
+        "definition": {
+          "entityName": "ContactInfo",
+          "schema": {
+            "$ref": "#/backend/entities/ContactInfo"
+          },
+          "description": "Stores contact information. There should only be one document in this collection.",
+          "params": [
+            {
+              "name": "contactInfoId",
+              "description": "Unique identifier for the contact information."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "This portfolio structure prioritizes simplicity and ease of management. Given the limited collaborative nature and the focus on displaying content, a straightforward structure is employed. All entities (Projects, Illustrations, and ContactInfo) are stored in root-level collections. This approach avoids unnecessary nesting and simplifies data retrieval and security rules.\n\n*   **Authorization Independence:**  Since there's no complex user-based authorization, Authorization Independence is maintained by directly managing access to the data via Firebase authentication and security rules.\n*   **QAPs:** Secure `list` operations are supported by segregating each entity type into its own collection.  Access to each collection can be controlled independently. The structure is optimized for read-heavy operations typical of a portfolio application.\n\nProjects, Illustrations, and ContactInfo are stored at the top level. This is appropriate, as there is no ownership or collaborative editing and we want to facilitate the ease of listing each of them."
+  }
+}
