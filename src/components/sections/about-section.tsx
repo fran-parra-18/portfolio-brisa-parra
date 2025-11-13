@@ -21,7 +21,7 @@ export default function AboutSection() {
           inView ? "opacity-100" : "opacity-0"
         )}
       >
-        <div className="grid md:grid-cols-5 gap-12 items-center">
+        <div className="grid md:grid-cols-5 gap-12 items-center pl-32">
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -32,8 +32,8 @@ export default function AboutSection() {
             <Image
               src={imagePortrait}
               alt="Imagen de la artista"
-              width={400}
-              height={600}
+              width={480}
+              height={720}
               className="object-contain"
               data-ai-hint="illustrator portrait"
             />
@@ -49,7 +49,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="md:col-span-3 space-y-6 text-lg"
+            className="md:col-span-2 space-y-6 text-lg"
           >
             {/* 
               Puedes cambiar el tamaño del título "Sobre mí" aquí.
