@@ -47,8 +47,20 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
+            {/* 
+              Puedes cambiar el tamaño del texto "02. Diseño de marca" aquí.
+              Usa clases como text-sm, text-base, etc.
+            */}
             <p className="text-primary font-bold">02. Diseño de marca</p>
+            {/* 
+              Puedes cambiar el tamaño del título del proyecto (ej. "Impulso Azul") aquí.
+              Usa clases como text-3xl, text-4xl, text-5xl.
+            */}
             <h2 className="text-4xl font-headline font-bold">{project.title}</h2>
+            {/* 
+              Puedes cambiar el tamaño del párrafo de descripción aquí.
+              Usa clases como text-sm, text-base, text-lg.
+            */}
             <p className="text-muted-foreground max-w-prose">{project.description}</p>
           </div>
            <div className="grid grid-cols-2 grid-rows-2 gap-4 h-[500px]">

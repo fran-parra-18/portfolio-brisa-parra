@@ -51,6 +51,11 @@
  
 @layer base {
   html {
+    /* 
+      Puedes ajustar el tamaño de fuente base de toda la página aquí. 
+      El valor predeterminado es 150%, lo que hace que 1rem sea igual a 24px si el navegador usa 16px por defecto.
+      Reducir este valor (ej. 100%) hará que todos los textos que usan unidades 'rem' sean más pequeños.
+    */
     font-size: 150%;
     scroll-behavior: smooth;
   }

@@ -43,7 +43,15 @@ export default function GallerySection() {
       )}
     >
       <div className="container mx-auto px-4 text-center mb-12">
+        {/* 
+          Puedes cambiar el tamaño del texto "03. Ilustraciones" aquí.
+          Usa clases como text-sm, text-base, etc.
+        */}
         <p className="text-primary font-bold">03. Ilustraciones</p>
+        {/* 
+          Puedes cambiar el tamaño del título "Galería" aquí.
+          Usa clases como text-3xl, text-4xl, text-5xl.
+        */}
         <h2 className="text-4xl font-headline font-bold">Galería</h2>
       </div>
       <div className="w-full relative">
@@ -64,11 +72,6 @@ export default function GallerySection() {
           <CarouselContent className="-ml-4">
             {galleryImages.slice(0, 12).map((image) => (
               <CarouselItem key={image.id} className="pl-4 basis-auto">
-                {/* 
-                  Puedes ajustar el ancho (w-64) y alto (h-96) de las imágenes del carrusel aquí.
-                  w-64 = 16rem = 256px
-                  h-96 = 24rem = 384px
-                */}
                 <div className="relative w-64 h-96"> 
                   <Image
                     src={image.imageUrl}
@@ -83,6 +86,11 @@ export default function GallerySection() {
         </Carousel>
       </div>
        <div className="container mx-auto px-4 text-center mt-12">
+          {/* 
+            Puedes cambiar el tamaño del texto del botón "Ver todas" aquí.
+            La clase 'size="lg"' afecta el padding y altura, pero puedes añadir
+            clases como 'text-base', 'text-lg' para el tamaño de la fuente.
+          */}
           <Link href="/gallery" passHref prefetch={false}>
             <Button variant="outline" size="lg">Ver todas</Button>
           </Link>

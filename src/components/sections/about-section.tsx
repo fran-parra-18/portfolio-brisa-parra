@@ -39,6 +39,11 @@ export default function AboutSection() {
             />
           </motion.div>
 
+          {/* 
+            Puedes cambiar el tamaño de los párrafos de esta sección aquí.
+            La clase 'text-lg' aplica a todos los <p> dentro de este div.
+            Puedes cambiarla a text-base, text-xl, etc.
+          */}
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -46,6 +51,10 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="md:col-span-3 space-y-6 text-lg"
           >
+            {/* 
+              Puedes cambiar el tamaño del título "Sobre mí" aquí.
+              Usa clases como text-3xl, text-4xl, text-5xl.
+            */}
             <h2 className="text-4xl font-headline font-bold mb-8">Sobre mí</h2>
             <p className="max-w-prose">
               Ilustradora de Benito Juárez, Buenos Aires.

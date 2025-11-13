@@ -34,6 +34,10 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-10">
+          {/* 
+            Puedes cambiar el tamaño del texto "Portfolio" aquí.
+            Ej. text-xl, text-2xl, text-3xl
+          */}
           <Link href="/" className="text-2xl font-bold font-headline transition-colors duration-300 hover:text-primary">
             Portfolio
           </Link>
@@ -42,6 +46,10 @@ export default function Header() {
               <ul className="flex items-center space-x-8">
                 {navItems.map((item) => (
                   <li key={item.href}>
+                    {/* 
+                      Puedes cambiar el tamaño de los enlaces de navegación aquí.
+                      Ej. text-xs, text-sm, text-base
+                    */}
                     <Link
                       href={item.href}
                       className="text-sm font-medium transition-colors duration-300 hover:text-primary"

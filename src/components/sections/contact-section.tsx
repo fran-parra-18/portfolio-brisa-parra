@@ -35,6 +35,10 @@ export default function ContactSection() {
       )}
     >
       <div className="container mx-auto px-4">
+        {/* 
+          Puedes cambiar el tamaño del título "Contactame" aquí.
+          Usa clases como text-3xl, text-4xl, text-5xl.
+        */}
         <h2 className="text-4xl font-headline font-bold mb-12">
           Contactame
         </h2>
@@ -52,6 +56,11 @@ export default function ContactSection() {
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <link.icon className="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110" />
+              {/* 
+                Puedes cambiar el tamaño del texto de los enlaces de contacto (Instagram, WhatsApp, etc.) aquí.
+                Actualmente está en 'text-lg'. Puedes cambiarlo a text-base, text-xl, etc.
+                La clase está en el elemento <a> padre, unas líneas más arriba.
+              */}
               <span className="transition-colors duration-300 group-hover:text-primary">{link.label}</span>
             </a>
           ))}

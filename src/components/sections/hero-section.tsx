@@ -16,9 +16,19 @@ export default function HeroSection() {
       )}
     >
       <div className="space-y-4">
+        {/* 
+          Puedes cambiar el tamaño del título principal "Brisa Parra" aquí.
+          Usa clases como text-5xl, text-6xl, text-7xl.
+          También puedes usar prefijos para diferentes tamaños de pantalla (ej. md:text-7xl).
+        */}
         <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter">
           Brisa Parra
         </h1>
+        {/* 
+          Puedes cambiar el tamaño del subtítulo "– Ilustradora –" aquí.
+          Usa clases como text-lg, text-xl, text-2xl.
+          También puedes usar prefijos para diferentes tamaños de pantalla (ej. md:text-2xl).
+        */}
         <p className="text-xl md:text-2xl text-primary">
           – Ilustradora –
         </p>
