@@ -3,77 +3,51 @@
 import Image from "next/image";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { useState, useEffect, useRef } from "react";
-import imagePortrait  from "../../app/assests/portrait.png";
-
-const aboutImage = PlaceHolderImages.find(p => p.id === "about_brisa");
+import imagePortrait from "../../app/assests/portrait.png";
+import { motion } from "framer-motion";
+import { Parallax } from "react-scroll-parallax";
 
 export default function AboutSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
-  const [scrollY, setScrollY] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const getParallaxStyle = () => {
-    if (!sectionRef.current) return {};
-    const { offsetTop, offsetHeight } = sectionRef.current;
-    const scrollPosition = scrollY;
-    const start = offsetTop - window.innerHeight;
-    const end = offsetTop + offsetHeight;
-  
-    if (scrollPosition < start || scrollPosition > end) return {};
-  
-    const progress = (scrollPosition - start) / (end - start);
-    const translateY = (progress - 0.5) * -350; // Adjust multiplier for effect intensity
-  
-    return {
-      transform: `translateY(${translateY}px)`,
-    };
-  };
 
   return (
     <section
-      ref={sectionRef}
+      ref={ref}
       id="about"
       className="min-h-screen flex items-center justify-center overflow-hidden"
     >
       <div
-        ref={ref}
         className={cn(
           "container mx-auto px-4 transition-opacity duration-1000 ease-in-out",
           inView ? "opacity-100" : "opacity-0"
         )}
       >
         <div className="grid md:grid-cols-5 gap-12 items-center">
-          <div className="md:col-span-2 flex justify-center">
-             {aboutImage && (
-                <div 
-                  className="transition-transform duration-300 ease-out"
-                  style={getParallaxStyle()}
-                >
-                  <Image
-                    src={imagePortrait}
-                    alt={aboutImage.description}
-                    width={400}
-                    height={600}
-                    className="object-contain"
-                    data-ai-hint={aboutImage.imageHint}
-                  />
-                </div>
-              )}
-          </div>
-          <div className={cn(
-              "md:col-span-3 space-y-6 text-lg transition-all duration-1000 ease-out",
-              inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-            )}>
+          <Parallax speed={-15} className="md:col-span-2 flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src={imagePortrait}
+                alt="Imagen de la artista"
+                width={400}
+                height={600}
+                className="object-contain"
+                data-ai-hint="illustrator portrait"
+              />
+            </motion.div>
+          </Parallax>
+
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="md:col-span-3 space-y-6 text-lg"
+          >
             <h2 className="text-4xl font-headline font-bold mb-8">Sobre mí</h2>
             <p className="max-w-prose">
               Ilustradora de Benito Juárez, Buenos Aires.
@@ -87,7 +61,7 @@ export default function AboutSection() {
             <p className="max-w-prose font-semibold text-primary">
               Bienvenidos a mi universo visual.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
