@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { X } from "lucide-react";
 
 type Illustration = {
@@ -14,10 +13,34 @@ type Illustration = {
   imageHint?: string;
 };
 
-const allImages = PlaceHolderImages;
-
 export default function GalleryPage() {
+  const [images, setImages] = useState<Illustration[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<Illustration | null>(null);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const res = await fetch('/api/imagekit');
+        if (!res.ok) {
+          throw new Error('Failed to fetch images');
+        }
+        const data = await res.json();
+        const fetchedImages = data.map((img: any) => ({
+          id: img.fileId,
+          imageUrl: img.url,
+          description: img.name,
+        }));
+        setImages(fetchedImages);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchImages();
+  }, []);
 
   const openModal = (image: Illustration) => {
     setSelectedImage(image);
@@ -35,24 +58,27 @@ export default function GalleryPage() {
           <h1 className="text-4xl md:text-5xl font-bold font-headline tracking-tighter text-center mb-16">
             Galería Completa
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {allImages.map((image) => (
-              <div
-                key={image.id}
-                className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
-                onClick={() => openModal(image)}
-              >
-                <Image
-                  src={image.imageUrl}
-                  alt={image.description}
-                  width={600}
-                  height={600}
-                  className="w-full h-full object-cover aspect-square transform transition-transform duration-300 group-hover:scale-105"
-                  data-ai-hint={image.imageHint}
-                />
-              </div>
-            ))}
-          </div>
+          {isLoading ? (
+             <div className="text-center">Cargando imágenes...</div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {images.map((image) => (
+                <div
+                  key={image.id}
+                  className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                  onClick={() => openModal(image)}
+                >
+                  <Image
+                    src={image.imageUrl}
+                    alt={image.description}
+                    width={600}
+                    height={600}
+                    className="w-full h-full object-cover aspect-square transform transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </main>
       <Footer />

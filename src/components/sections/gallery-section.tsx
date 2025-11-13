@@ -3,11 +3,15 @@
 import Image from "next/image";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { useRef, useState, MouseEvent, useMemo } from "react";
+import { useRef, useState, MouseEvent, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
+type Illustration = {
+  id: string;
+  imageUrl: string;
+  description: string;
+};
 
 export default function GallerySection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -15,8 +19,28 @@ export default function GallerySection() {
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  
-  const galleryImages = PlaceHolderImages;
+  const [galleryImages, setGalleryImages] = useState<Illustration[]>([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const res = await fetch('/api/imagekit');
+        if (!res.ok) {
+          throw new Error('Failed to fetch images');
+        }
+        const data = await res.json();
+        const fetchedImages = data.map((img: any) => ({
+          id: img.fileId,
+          imageUrl: img.url,
+          description: img.name,
+        }));
+        setGalleryImages(fetchedImages);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchImages();
+  }, []);
 
   const duplicatedImages = useMemo(() => {
     if (!galleryImages) return [];
@@ -85,7 +109,6 @@ export default function GallerySection() {
                 width={400}
                 height={600}
                 className="w-full h-auto object-cover rounded-lg shadow-md pointer-events-none"
-                data-ai-hint={image.imageHint}
               />
             </div>
           ))}
