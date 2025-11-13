@@ -40,9 +40,9 @@ export default function AboutSection() {
           </motion.div>
 
           {/* 
-            Puedes cambiar el tamaño de los párrafos de esta sección aquí.
-            La clase 'text-lg' aplica a todos los <p> dentro de este div.
-            Puedes cambiarla a text-base, text-xl, etc.
+            Puedes controlar el ancho de este contenedor de texto de varias maneras:
+            1. Cambia 'md:col-span-3' a 'md:col-span-2' para que ocupe menos columnas en la rejilla.
+            2. Añade una clase de ancho máximo como 'max-w-2xl' para limitar su anchura máxima.
           */}
           <motion.div
             initial={{ opacity: 0, x: 100 }}
@@ -55,18 +55,21 @@ export default function AboutSection() {
               Puedes cambiar el tamaño del título "Sobre mí" aquí.
               Usa clases como text-3xl, text-4xl, text-5xl.
             */}
-            <h2 className="text-4xl font-headline font-bold mb-8">Sobre mí</h2>
+            <h2 className="text-8xl font-headline font-bold mb-8">Sobre mí</h2>
+            {/* 
+              Puedes cambiar el tamaño de los párrafos de esta sección aquí.
+              La clase 'text-lg' aplica a todos los <p> dentro de este div.
+              Puedes cambiarla a text-base, text-xl, etc.
+            */}
             <p className="max-w-prose">
-              Ilustradora de Benito Juárez, Buenos Aires.
+            Ilustradora de Benito Juárez, Buenos Aires.
             </p>
             <p className="max-w-prose">
-              Me inspiro en lo cotidiano: los viajes en colectivo, lo que me rodea, los pequeños escenarios de todos los días. Busco capturar el día a día y los rituales, plasmar en lápiz, hueso, lo que le pido al imaginario, al plano digital.
-            </p>
+            Me inspiro en lo cotidiano: los viajes en colectivo, lo que me rodea, las pequeñas escenas de todos los días. Anoto ideas en el celular y las llevo al papel, primero en lápiz, luego, si lo pide la imagen, al plano digital.            </p>
             <p className="max-w-prose">
-              Mis ilustraciones buscan generar cercanía, convertir historias simples en sensibilidad. Me gusta trabajar con el cuerpo femenino y las escenas como recursos para crear climas y emociones.
-            </p>
+            Mis ilustraciones buscan generar cercanía, contar historias simples con sensibilidad. Me gusta trabajar con el cuerpo femenino y los entornos como recursos para crear climas y emociones.            </p>
             <p className="max-w-prose font-semibold text-primary">
-              Bienvenidos a mi universo visual.
+            Bienvenidx a mi universo visual.
             </p>
           </motion.div>
         </div>

@@ -56,7 +56,7 @@
       El valor predeterminado es 150%, lo que hace que 1rem sea igual a 24px si el navegador usa 16px por defecto.
       Reducir este valor (ej. 100%) hará que todos los textos que usan unidades 'rem' sean más pequeños.
     */
-    font-size: 150%;
+    font-size: 120%;
     scroll-behavior: smooth;
   }
   * {
