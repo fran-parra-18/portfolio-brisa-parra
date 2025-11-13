@@ -4,9 +4,9 @@
  *
  * Core Philosophy:
  * The security model prioritizes simplicity and ease of management for a portfolio application
- * with limited collaborative features. Data is stored in root-level collections without complex
- * user-based authorization. Public read access is enabled for all collections. Write access is
- * forbidden to prevent unauthorized data modification.
+ * with limited collaborative features. Data is stored in root-level collections.
+ * Public read access is enabled for all collections. Write access is
+ * restricted to a specific admin user.
  *
  * Data Structure:
  * - /projects/{projectId}: Stores project information.
@@ -14,9 +14,8 @@
  * - /contactInfo/{contactInfoId}: Stores contact information.
  *
  * Key Security Decisions:
- * - Public read access: All collections are publicly readable, allowing any user to view the portfolio content.
- * - Write restrictions: All write operations (create, update, delete) are denied to prevent unauthorized data modification.
- * - No user listing: There are no user-related collections or operations in this application.
+ * - Public read access: All collections are publicly readable.
+ * - Restricted write access: Write operations are only allowed for the admin user.
  */
 rules_version = '2';
 service cloud.firestore {
@@ -38,12 +37,12 @@ service cloud.firestore {
      * @description Defines read and write access for the /illustrations collection.
      * @path /illustrations/{illustrationId}
      * @allow (get, list) Any user can read illustration information.
-     * @deny (create, update, delete) No user can create, update, or delete illustration information.
-     * @principle Allows public read access but restricts all write operations for security.
+     * @allow (create, update, delete) Only the admin user can manage illustrations.
+     * @principle Allows public read access and restricts write operations to the admin.
      */
     match /illustrations/{illustrationId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create, update, delete: if request.auth != null && request.auth.token.email == 'franciscoparra22@gmail.com';
     }
 
     /**

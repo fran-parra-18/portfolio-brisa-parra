@@ -4,12 +4,13 @@ import Image from "next/image";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { useRef, useState, MouseEvent } from "react";
+import { useRef, useState, MouseEvent, useMemo } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useCollection, useMemoFirebase } from "@/firebase";
+import { collection, query, limit } from "firebase/firestore";
+import { useFirestore } from "@/firebase/provider";
 
-const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith("gallery_"));
-const duplicatedImages = [...galleryImages, ...galleryImages];
 
 export default function GallerySection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -17,6 +18,17 @@ export default function GallerySection() {
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  
+  const firestore = useFirestore();
+  const illustrationsCollection = useMemoFirebase(() => collection(firestore, 'illustrations'), [firestore]);
+  const illustrationsQuery = useMemoFirebase(() => query(illustrationsCollection, limit(12)), [illustrationsCollection]);
+  const { data: galleryImages } = useCollection(illustrationsQuery);
+
+  const duplicatedImages = useMemo(() => {
+    if (!galleryImages) return [];
+    return [...galleryImages, ...galleryImages];
+  }, [galleryImages]);
+
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (!marqueeRef.current) return;
