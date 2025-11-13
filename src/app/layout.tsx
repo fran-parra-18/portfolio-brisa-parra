@@ -18,21 +18,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <FirebaseClientProvider>
-      <ParallaxProvider>
-        <html lang="es" className="dark">
-          <head>
-            <title>Brisa's Portfolio</title>
-            <meta name="description" content="Portfolio de Brisa Parra, Ilustradora" />
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          </head>
-          <body className="font-body antialiased">
+    <html lang="es" className="dark">
+      <head>
+        <title>Brisa's Portfolio</title>
+        <meta name="description" content="Portfolio de Brisa Parra, Ilustradora" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className="font-body antialiased">
+        <FirebaseClientProvider>
+          <ParallaxProvider>
             {children}
             <Toaster />
-          </body>
-        </html>
-      </ParallaxProvider>
-    </FirebaseClientProvider>
+          </ParallaxProvider>
+        </FirebaseClientProvider>
+      </body>
+    </html>
   );
 }
