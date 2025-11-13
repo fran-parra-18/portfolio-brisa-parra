@@ -5,12 +5,12 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 import impulso1 from "@/app/assets/section2/1.jpg";
-import impulso2 from "@/app/assets/section2/2.png";
-import impulso3 from "@/app/assets/section2/3.jpg";
+import impulso2 from "@/app/assets/section2/3.jpg";
+import impulso3 from "@/app/assets/section2/2.png";
 
 import zelda1 from "@/app/assets/section2/4.jpg";
-import zelda2 from "@/app/assets/section2/5.png";
-import zelda3 from "@/app/assets/section2/6.jpg";
+import zelda2 from "@/app/assets/section2/6.jpg";
+import zelda3 from "@/app/assets/section2/5.png";
 
 
 const impulsoImages = [
@@ -51,19 +51,37 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
             <h2 className="text-4xl font-headline font-bold">{project.title}</h2>
             <p className="text-muted-foreground max-w-prose">{project.description}</p>
           </div>
-          <div className="grid grid-cols-2 grid-rows-2 gap-4">
-            {project.images.slice(0, 4).map((image, index) => (
+           <div className="grid grid-cols-2 grid-rows-2 gap-4 h-[500px]">
+            <div className="col-span-2 row-span-1 relative">
               <Image
-                key={image.id}
-                src={image.src}
-                alt={image.description}
-                width={600}
-                height={600}
-                className="rounded-lg object-cover shadow-lg aspect-square"
-                data-ai-hint={image.imageHint}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                key={project.images[0].id}
+                src={project.images[0].src}
+                alt={project.images[0].description}
+                fill
+                className="rounded-lg object-cover shadow-lg"
+                data-ai-hint={project.images[0].imageHint}
               />
-            ))}
+            </div>
+            <div className="col-span-1 row-span-1 relative">
+              <Image
+                key={project.images[1].id}
+                src={project.images[1].src}
+                alt={project.images[1].description}
+                fill
+                className="rounded-lg object-cover shadow-lg"
+                data-ai-hint={project.images[1].imageHint}
+              />
+            </div>
+            <div className="col-span-1 row-span-1 relative">
+               <Image
+                key={project.images[2].id}
+                src={project.images[2].src}
+                alt={project.images[2].description}
+                fill
+                className="rounded-lg object-cover shadow-lg"
+                data-ai-hint={project.images[2].imageHint}
+              />
+            </div>
           </div>
         </div>
       </div>
