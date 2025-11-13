@@ -5,6 +5,8 @@ import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { useRef, useState, MouseEvent } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith("gallery_"));
 const duplicatedImages = [...galleryImages, ...galleryImages];
@@ -82,6 +84,11 @@ export default function GallerySection() {
           ))}
         </div>
       </div>
+       <div className="container mx-auto px-4 text-center mt-12">
+          <Link href="/gallery" passHref>
+            <Button variant="outline" size="lg">Ver todas</Button>
+          </Link>
+        </div>
     </section>
   );
 }

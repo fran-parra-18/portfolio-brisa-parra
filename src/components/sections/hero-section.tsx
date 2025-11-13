@@ -11,7 +11,7 @@ export default function HeroSection() {
       ref={ref}
       id="home"
       className={cn(
-        "min-h-[150vh] flex items-center justify-center text-center transition-all duration-1000 ease-in-out",
+        "min-h-[100vh] flex items-center justify-center text-center transition-all duration-1000 ease-in-out",
         inView ? "opacity-100" : "opacity-0"
       )}
     >
