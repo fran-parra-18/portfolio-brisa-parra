@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Times New Roman', 'serif'],
-        headline: ['Times New Roman', 'serif'],
+        body: ['Calmingly', 'sans-serif'],
+        headline: ['Calmingly', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {

@@ -22,6 +22,7 @@ export default function RootLayout({
         <meta name="description" content="Portfolio de Brisa Parra, Ilustradora" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.cdnfonts.com/css/calmingly" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
           {children}
