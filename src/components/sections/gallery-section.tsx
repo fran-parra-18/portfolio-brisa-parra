@@ -83,7 +83,7 @@ export default function GallerySection() {
         </Carousel>
       </div>
        <div className="container mx-auto px-4 text-center mt-12">
-          <Link href="/gallery" passHref>
+          <Link href="/gallery" passHref prefetch={false}>
             <Button variant="outline" size="lg">Ver todas</Button>
           </Link>
         </div>
