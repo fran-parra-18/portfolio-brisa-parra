@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import vegetal1 from "@/app/assets/section1/vegetal-1.png";
-import vegetal2 from "@/app/assets/section1/vegetal-2.png";
-import vegetal3 from "@/app/assets/section1/vegetal-3.png";
-import vegetal4 from "@/app/assets/section1/vegetal-4.png";
+import vegetal1 from "@/app/assets/section1/1.jpg";
+import vegetal2 from "@/app/assets/section1/2.jpg";
+import vegetal3 from "@/app/assets/section1/3.jpg";
+import vegetal4 from "@/app/assets/section1/4.jpg";
 
 
 const projectImages = [
