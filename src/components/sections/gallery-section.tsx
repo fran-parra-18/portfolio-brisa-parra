@@ -64,10 +64,10 @@ export default function GallerySection() {
         onMouseLeave={handleMouseLeave}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
-        className="w-full overflow-x-auto cursor-grab relative"
+        className="w-full overflow-x-auto cursor-grab relative no-scrollbar"
         style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
       >
-        <div className="flex gap-6 animate-marquee hover:[animation-play-state:paused]">
+        <div className="flex gap-6 animate-marquee hover:[animation-play-state:paused] items-center select-none">
           {duplicatedImages.map((image, index) => (
             <div key={`${image.id}-${index}`} className="w-64 md:w-80 flex-shrink-0">
               <Image
