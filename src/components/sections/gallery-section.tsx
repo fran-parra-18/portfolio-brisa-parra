@@ -4,19 +4,53 @@ import Image from "next/image";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { useRef, useState, MouseEvent } from "react";
 
 const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith("gallery_"));
 const duplicatedImages = [...galleryImages, ...galleryImages];
 
 export default function GallerySection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    if (!marqueeRef.current) return;
+    setIsDown(true);
+    marqueeRef.current.classList.add("cursor-grabbing");
+    setStartX(e.pageX - marqueeRef.current.offsetLeft);
+    setScrollLeft(marqueeRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    if (!marqueeRef.current) return;
+    setIsDown(false);
+    marqueeRef.current.classList.remove("cursor-grabbing");
+  };
+
+  const handleMouseUp = () => {
+    if (!marqueeRef.current) return;
+    setIsDown(false);
+    marqueeRef.current.classList.remove("cursor-grabbing");
+  };
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!isDown || !marqueeRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - marqueeRef.current.offsetLeft;
+    const walk = (x - startX) * 2; //scroll-fast
+    marqueeRef.current.scrollLeft = scrollLeft - walk;
+  };
+
 
   return (
     <section
       ref={ref}
       id="gallery"
       className={cn(
-        "py-20 md:py-32 bg-card transition-all duration-1000 ease-in-out",
+        "min-h-screen flex flex-col justify-center bg-card transition-all duration-1000 ease-in-out",
         inView ? "opacity-100" : "opacity-0"
       )}
     >
@@ -25,7 +59,12 @@ export default function GallerySection() {
         <h2 className="text-4xl font-headline font-bold">Galería</h2>
       </div>
       <div
-        className="w-full overflow-hidden relative"
+        ref={marqueeRef}
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        className="w-full overflow-x-auto cursor-grab relative"
         style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
       >
         <div className="flex gap-6 animate-marquee hover:[animation-play-state:paused]">
@@ -36,7 +75,7 @@ export default function GallerySection() {
                 alt={image.description}
                 width={400}
                 height={600}
-                className="w-full h-auto object-cover rounded-lg shadow-md"
+                className="w-full h-auto object-cover rounded-lg shadow-md pointer-events-none"
                 data-ai-hint={image.imageHint}
               />
             </div>

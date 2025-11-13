@@ -15,7 +15,7 @@ export default function AboutSection() {
       ref={ref}
       id="about"
       className={cn(
-        "py-20 md:py-32 transition-opacity duration-1000 ease-in-out",
+        "min-h-screen flex items-center justify-center transition-opacity duration-1000 ease-in-out",
         inView ? "opacity-100" : "opacity-0"
       )}
     >

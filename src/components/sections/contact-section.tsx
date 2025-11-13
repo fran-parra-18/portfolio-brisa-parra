@@ -30,7 +30,7 @@ export default function ContactSection() {
       ref={ref}
       id="contact"
       className={cn(
-        "py-20 md:py-40 text-center transition-all duration-1000 ease-in-out transform",
+        "min-h-screen flex items-center justify-center text-center transition-all duration-1000 ease-in-out transform",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       )}
     >

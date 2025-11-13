@@ -28,25 +28,27 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
       "absolute inset-0 transition-opacity duration-700 ease-in-out flex flex-col justify-center",
       isActive ? "opacity-100" : "opacity-0 pointer-events-none"
     )}>
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6 order-2 md:order-1">
-          <p className="text-primary font-bold">02. Diseño de marca</p>
-          <h2 className="text-4xl font-headline font-bold">{project.title}</h2>
-          <p className="text-muted-foreground max-w-prose">{project.description}</p>
-        </div>
-        <div className="grid grid-cols-2 gap-4 order-1 md:order-2">
-          {project.images.map((image, index) => (
-            <Image
-              key={image.id}
-              src={image.imageUrl}
-              alt={image.description}
-              width={600}
-              height={600}
-              className="rounded-lg object-cover shadow-lg aspect-square"
-              data-ai-hint={image.imageHint}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            />
-          ))}
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <p className="text-primary font-bold">02. Diseño de marca</p>
+            <h2 className="text-4xl font-headline font-bold">{project.title}</h2>
+            <p className="text-muted-foreground max-w-prose">{project.description}</p>
+          </div>
+          <div className="grid grid-cols-2 grid-rows-2 gap-4">
+            {project.images.slice(0, 4).map((image, index) => (
+              <Image
+                key={image.id}
+                src={image.imageUrl}
+                alt={image.description}
+                width={600}
+                height={600}
+                className="rounded-lg object-cover shadow-lg aspect-square"
+                data-ai-hint={image.imageHint}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -77,7 +79,7 @@ export default function BrandingProjectsSection() {
 
   return (
     <section ref={sectionRef} className="relative h-[200vh]">
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
         <div className="container mx-auto px-4 h-full relative">
           <ProjectContent id="impulso" isActive={activeProject === 'impulso'} />
           <ProjectContent id="zelda" isActive={activeProject === 'zelda'} />

@@ -15,7 +15,7 @@ export default function PersonalProjectSection() {
       ref={ref}
       id="projects"
       className={cn(
-        "py-20 md:py-32 bg-card transition-all duration-1000 ease-in-out transform",
+        "min-h-screen flex items-center justify-center bg-card transition-all duration-1000 ease-in-out transform",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       )}
     >
@@ -28,8 +28,8 @@ export default function PersonalProjectSection() {
               Un concepto oral convertido en proyecto donde me encontré explorando mis raíces, mis abuelos y mi pedazo de campo. Este libro ilustrado busca reconectarme con ese universo del interior que es mi refugio y donde la soledad no se siente del todo.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6">
-            {projectImages.map((image, index) => (
+          <div className="grid grid-cols-2 grid-rows-2 gap-4">
+            {projectImages.slice(0, 4).map((image, index) => (
               <div
                 key={image.id}
                 className={cn(
@@ -43,7 +43,7 @@ export default function PersonalProjectSection() {
                   alt={image.description}
                   width={800}
                   height={600}
-                  className="rounded-lg object-cover shadow-lg"
+                  className="rounded-lg object-cover shadow-lg aspect-square"
                   data-ai-hint={image.imageHint}
                 />
               </div>
