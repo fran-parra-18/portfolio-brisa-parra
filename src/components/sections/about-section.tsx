@@ -4,36 +4,75 @@ import Image from "next/image";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { useState, useEffect, useRef } from "react";
 
 const aboutImage = PlaceHolderImages.find(p => p.id === "about_brisa");
 
 export default function AboutSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+  const [scrollY, setScrollY] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const getParallaxStyle = () => {
+    if (!sectionRef.current) return {};
+    const { offsetTop, offsetHeight } = sectionRef.current;
+    const scrollPosition = scrollY;
+    const start = offsetTop - window.innerHeight;
+    const end = offsetTop + offsetHeight;
+  
+    if (scrollPosition < start || scrollPosition > end) return {};
+  
+    const progress = (scrollPosition - start) / (end - start);
+    const translateY = (progress - 0.5) * -150; // Adjust multiplier for effect intensity
+  
+    return {
+      transform: `translateY(${translateY}px)`,
+    };
+  };
 
   return (
     <section
-      ref={ref}
+      ref={sectionRef}
       id="about"
-      className={cn(
-        "min-h-screen flex items-center justify-center transition-opacity duration-1000 ease-in-out",
-        inView ? "opacity-100" : "opacity-0"
-      )}
+      className="min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      <div
+        ref={ref}
+        className={cn(
+          "container mx-auto px-4 transition-opacity duration-1000 ease-in-out",
+          inView ? "opacity-100" : "opacity-0"
+        )}
+      >
         <div className="grid md:grid-cols-5 gap-12 items-center">
           <div className="md:col-span-2 flex justify-center">
              {aboutImage && (
-                <Image
-                  src={aboutImage.imageUrl}
-                  alt={aboutImage.description}
-                  width={300}
-                  height={300}
-                  className="rounded-full object-cover aspect-square shadow-lg shadow-primary/10"
-                  data-ai-hint={aboutImage.imageHint}
-                />
+                <div 
+                  className="transition-transform duration-300 ease-out"
+                  style={getParallaxStyle()}
+                >
+                  <Image
+                    src={aboutImage.imageUrl}
+                    alt={aboutImage.description}
+                    width={300}
+                    height={300}
+                    className="rounded-full object-cover aspect-square shadow-lg shadow-primary/10"
+                    data-ai-hint={aboutImage.imageHint}
+                  />
+                </div>
               )}
           </div>
-          <div className="md:col-span-3 space-y-6 text-lg">
+          <div className={cn(
+              "md:col-span-3 space-y-6 text-lg transition-all duration-1000 ease-out",
+              inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+            )}>
             <h2 className="text-4xl font-headline font-bold mb-8">Sobre mí</h2>
             <p className="max-w-prose">
               Ilustradora de Benito Juárez, Buenos Aires.

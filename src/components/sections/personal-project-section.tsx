@@ -21,7 +21,10 @@ export default function PersonalProjectSection() {
     >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+          <div className={cn(
+              "space-y-6 transition-all duration-1000 ease-out",
+              inView ? "opacity-100 -translate-x-0" : "opacity-0 -translate-x-8"
+            )}>
             <p className="text-primary font-bold">01. Proyecto personal</p>
             <h2 className="text-4xl font-headline font-bold">Libro Álbum <br /> Mi yo vegetal</h2>
             <p className="text-muted-foreground max-w-prose">
