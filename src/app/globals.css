@@ -51,7 +51,7 @@
  
 @layer base {
   html {
-    font-size: 115%;
+    font-size: 230%;
   }
   * {
     @apply border-border;

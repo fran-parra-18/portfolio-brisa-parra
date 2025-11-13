@@ -35,7 +35,9 @@ export default function ContactSection() {
       )}
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-headline font-bold mb-12">Contactame</h2>
+        <h2 className="text-4xl font-headline font-bold mb-12">
+          Contactame
+        </h2>
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
           {contactLinks.map((link, index) => (
             <a

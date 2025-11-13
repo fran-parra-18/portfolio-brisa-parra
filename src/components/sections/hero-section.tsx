@@ -15,7 +15,7 @@ export default function HeroSection() {
         inView ? "opacity-100" : "opacity-0"
       )}
     >
-      <div className="space-y-4" style={{ fontSize: '150%' }}>
+      <div className="space-y-4">
         <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter">
           Brisa Parra
         </h1>
