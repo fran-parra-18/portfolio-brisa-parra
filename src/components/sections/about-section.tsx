@@ -5,6 +5,7 @@ import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { useState, useEffect, useRef } from "react";
+import imagePortrait  from "../../app/assests/portrait.png";
 
 const aboutImage = PlaceHolderImages.find(p => p.id === "about_brisa");
 
@@ -31,7 +32,7 @@ export default function AboutSection() {
     if (scrollPosition < start || scrollPosition > end) return {};
   
     const progress = (scrollPosition - start) / (end - start);
-    const translateY = (progress - 0.5) * -250; // Adjust multiplier for effect intensity
+    const translateY = (progress - 0.5) * -350; // Adjust multiplier for effect intensity
   
     return {
       transform: `translateY(${translateY}px)`,
@@ -59,11 +60,11 @@ export default function AboutSection() {
                   style={getParallaxStyle()}
                 >
                   <Image
-                    src={aboutImage.imageUrl}
+                    src={imagePortrait}
                     alt={aboutImage.description}
-                    width={300}
-                    height={300}
-                    className="rounded-full object-cover aspect-square shadow-lg shadow-primary/10"
+                    width={400}
+                    height={600}
+                    className="object-contain"
                     data-ai-hint={aboutImage.imageHint}
                   />
                 </div>
