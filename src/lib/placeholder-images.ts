@@ -7,6 +7,5 @@ export type ImagePlaceholder = {
   imageHint: string;
 };
 
-// Note: The main gallery page now loads from Firestore.
-// This file is kept for other sections of the site.
+// This file is now the single source of truth for the gallery.
 export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;

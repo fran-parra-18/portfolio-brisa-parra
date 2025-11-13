@@ -5,7 +5,6 @@ import Image from "next/image";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 
 type Illustration = {
