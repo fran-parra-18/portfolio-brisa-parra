@@ -52,7 +52,7 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
             <p className="text-muted-foreground max-w-prose">{project.description}</p>
           </div>
            <div className="grid grid-cols-2 grid-rows-2 gap-4 h-[500px]">
-            <div className="col-span-2 row-span-1 relative">
+            <div className="col-span-1 row-span-1 relative">
               <Image
                 key={project.images[0].id}
                 src={project.images[0].src}
@@ -62,7 +62,7 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
                 data-ai-hint={project.images[0].imageHint}
               />
             </div>
-            <div className="col-span-1 row-span-1 relative">
+            <div className="col-span-1 row-span-2 relative">
               <Image
                 key={project.images[1].id}
                 src={project.images[1].src}
