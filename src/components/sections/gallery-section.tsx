@@ -72,6 +72,10 @@ export default function GallerySection() {
           <CarouselContent className="-ml-4">
             {galleryImages.slice(0, 12).map((image) => (
               <CarouselItem key={image.id} className="pl-4 basis-auto">
+                {/* 
+                  Puedes modificar el tamaño de las imagenes del carrusel aqui.
+                  w-64 es el ancho (width) y h-96 es el alto (height).
+                */}
                 <div className="relative w-64 h-96"> 
                   <Image
                     src={image.imageUrl}
