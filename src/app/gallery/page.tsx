@@ -5,6 +5,7 @@ import Image from "next/image";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { X } from "lucide-react";
+import { getImages } from "@/lib/imagekit";
 
 type Illustration = {
   id: string;
@@ -20,20 +21,12 @@ export default function GalleryPage() {
 
   useEffect(() => {
     const fetchImages = async () => {
+      setIsLoading(true);
       try {
-        const res = await fetch('/api/imagekit');
-        if (!res.ok) {
-          throw new Error('Failed to fetch images');
-        }
-        const data = await res.json();
-        const fetchedImages = data.map((img: any) => ({
-          id: img.fileId,
-          imageUrl: img.url,
-          description: img.name,
-        }));
+        const fetchedImages = await getImages();
         setImages(fetchedImages);
       } catch (error) {
-        console.error(error);
+        console.error("Failed to fetch images", error);
       } finally {
         setIsLoading(false);
       }
@@ -41,6 +34,7 @@ export default function GalleryPage() {
 
     fetchImages();
   }, []);
+
 
   const openModal = (image: Illustration) => {
     setSelectedImage(image);
