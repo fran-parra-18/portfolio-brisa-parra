@@ -31,7 +31,7 @@ export default function AboutSection() {
     if (scrollPosition < start || scrollPosition > end) return {};
   
     const progress = (scrollPosition - start) / (end - start);
-    const translateY = (progress - 0.5) * -150; // Adjust multiplier for effect intensity
+    const translateY = (progress - 0.5) * -250; // Adjust multiplier for effect intensity
   
     return {
       transform: `translateY(${translateY}px)`,
