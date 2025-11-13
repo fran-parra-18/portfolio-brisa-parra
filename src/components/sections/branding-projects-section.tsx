@@ -3,10 +3,28 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-const impulsoImages = PlaceHolderImages.filter(p => p.id.startsWith("impulso_"));
-const zeldaImages = PlaceHolderImages.filter(p => p.id.startsWith("zelda_"));
+import impulso1 from "@/app/assets/section2/impulso-1.png";
+import impulso2 from "@/app/assets/section2/impulso-2.png";
+import impulso3 from "@/app/assets/section2/impulso-3.png";
+import impulso4 from "@/app/assets/section2/impulso-4.png";
+import zelda1 from "@/app/assets/section2/zelda-1.png";
+import zelda2 from "@/app/assets/section2/zelda-2.png";
+import zelda3 from "@/app/assets/section2/zelda-3.png";
+import zelda4 from "@/app/assets/section2/zelda-4.png";
+
+const impulsoImages = [
+  { id: "impulso_1", src: impulso1, description: "Branding para Impulso Azul 1", imageHint: "brand design" },
+  { id: "impulso_2", src: impulso2, description: "Branding para Impulso Azul 2", imageHint: "logo concept" },
+  { id: "impulso_3", src: impulso3, description: "Branding para Impulso Azul 3", imageHint: "pastel branding" },
+  { id: "impulso_4", src: impulso4, description: "Branding para Impulso Azul 4", imageHint: "organic logo" },
+];
+const zeldaImages = [
+  { id: "zelda_1", src: zelda1, description: "Branding para Zelda Tattoo Supplies 1", imageHint: "supply branding" },
+  { id: "zelda_2", src: zelda2, description: "Branding para Zelda Tattoo Supplies 2", imageHint: "clean logo" },
+  { id: "zelda_3", src: zelda3, description: "Branding para Zelda Tattoo Supplies 3", imageHint: "modern identity" },
+  { id: "zelda_4", src: zelda4, description: "Branding para Zelda Tattoo Supplies 4", imageHint: "tattoo supplier" },
+];
 
 const projects = {
   impulso: {
@@ -39,7 +57,7 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
             {project.images.slice(0, 4).map((image, index) => (
               <Image
                 key={image.id}
-                src={image.imageUrl}
+                src={image.src}
                 alt={image.description}
                 width={600}
                 height={600}

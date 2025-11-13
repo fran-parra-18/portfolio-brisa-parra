@@ -3,9 +3,19 @@
 import Image from "next/image";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import vegetal1 from "@/app/assets/section1/vegetal-1.png";
+import vegetal2 from "@/app/assets/section1/vegetal-2.png";
+import vegetal3 from "@/app/assets/section1/vegetal-3.png";
+import vegetal4 from "@/app/assets/section1/vegetal-4.png";
 
-const projectImages = PlaceHolderImages.filter(p => p.id.startsWith("vegetal_"));
+
+const projectImages = [
+  { id: "vegetal_1", src: vegetal1, description: "Ilustración del proyecto Mi Yo Vegetal 1", imageHint: "plant illustration" },
+  { id: "vegetal_2", src: vegetal2, description: "Ilustración del proyecto Mi Yo Vegetal 2", imageHint: "nature drawing" },
+  { id: "vegetal_3", src: vegetal3, description: "Ilustración del proyecto Mi Yo Vegetal 3", imageHint: "botanical art" },
+  { id: "vegetal_4", src: vegetal4, description: "Ilustración del proyecto Mi Yo Vegetal 4", imageHint: "flower sketch" },
+];
+
 
 export default function PersonalProjectSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -42,7 +52,7 @@ export default function PersonalProjectSection() {
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <Image
-                  src={image.imageUrl}
+                  src={image.src}
                   alt={image.description}
                   width={800}
                   height={600}

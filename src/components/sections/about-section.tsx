@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import imagePortrait from "../../app/assests/portrait.png";
+import imagePortrait from "../../app/assets/portrait.png";
 import { motion } from "framer-motion";
 import { Parallax } from "react-scroll-parallax";
 
