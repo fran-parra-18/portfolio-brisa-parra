@@ -11,12 +11,7 @@ import { X } from "lucide-react";
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState<ImagePlaceholder | null>(null);
 
-  const allImages = PlaceHolderImages.filter(p => 
-    p.id.startsWith("gallery_") || 
-    p.id.startsWith("vegetal_") ||
-    p.id.startsWith("impulso_") ||
-    p.id.startsWith("zelda_")
-  );
+  const allImages = PlaceHolderImages;
 
   const openModal = (image: ImagePlaceholder) => {
     setSelectedImage(image);
@@ -61,13 +56,12 @@ export default function GalleryPage() {
           className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in-0"
           onClick={closeModal}
         >
-          <div className="relative max-w-4xl max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
+          <div className="relative max-w-4xl max-h-[90vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
             <Image
               src={selectedImage.imageUrl}
               alt={selectedImage.description}
-              width={1600}
-              height={1200}
-              className="object-contain w-full h-full rounded-lg shadow-2xl"
+              fill
+              className="object-contain rounded-lg shadow-2xl"
             />
              <button
               onClick={closeModal}
