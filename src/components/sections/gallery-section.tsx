@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { getImages } from "@/lib/imagekit";
 
 
 type Illustration = {
@@ -23,19 +24,10 @@ export default function GallerySection() {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const res = await fetch('/api/imagekit');
-        if (!res.ok) {
-          throw new Error('Failed to fetch images');
-        }
-        const data = await res.json();
-        const fetchedImages = data.map((img: any) => ({
-          id: img.fileId,
-          imageUrl: img.url,
-          description: img.name,
-        }));
+        const fetchedImages = await getImages();
         setGalleryImages(fetchedImages);
       } catch (error) {
-        console.error(error);
+        console.error('Failed to fetch images', error);
       }
     };
     fetchImages();
@@ -73,8 +65,9 @@ export default function GallerySection() {
             {galleryImages.slice(0, 12).map((image) => (
               <CarouselItem key={image.id} className="pl-4 basis-auto">
                 {/* 
-                  Puedes modificar el tamaño de las imagenes del carrusel aqui.
-                  w-64 es el ancho (width) y h-96 es el alto (height).
+                  Puedes ajustar el ancho (w-64) y alto (h-96) de las imágenes del carrusel aquí.
+                  w-64 = 16rem = 256px
+                  h-96 = 24rem = 384px
                 */}
                 <div className="relative w-64 h-96"> 
                   <Image
