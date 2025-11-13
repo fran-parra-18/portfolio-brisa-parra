@@ -6,8 +6,7 @@ import { cn } from "@/lib/utils";
 import { useRef, useState, MouseEvent, useMemo } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useCollection, useFirestore } from "@/firebase";
-import { collection, query, limit } from "firebase/firestore";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 
 export default function GallerySection() {
@@ -17,14 +16,12 @@ export default function GallerySection() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   
-  const firestore = useFirestore();
-  const illustrationsCollection = useMemo(() => collection(firestore, 'illustrations'), [firestore]);
-  const illustrationsQuery = useMemo(() => query(illustrationsCollection, limit(12)), [illustrationsCollection]);
-  const { data: galleryImages } = useCollection(illustrationsQuery);
+  const galleryImages = PlaceHolderImages;
 
   const duplicatedImages = useMemo(() => {
     if (!galleryImages) return [];
-    return [...galleryImages, ...galleryImages];
+    const limitedImages = galleryImages.slice(0, 12);
+    return [...limitedImages, ...limitedImages];
   }, [galleryImages]);
 
 
