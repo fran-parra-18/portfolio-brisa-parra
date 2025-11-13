@@ -52,6 +52,7 @@
 @layer base {
   html {
     font-size: 150%;
+    scroll-behavior: smooth;
   }
   * {
     @apply border-border;

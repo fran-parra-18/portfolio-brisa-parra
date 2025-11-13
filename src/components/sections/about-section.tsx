@@ -5,7 +5,6 @@ import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
 import imagePortrait from "../../app/assets/portrait.png";
 import { motion } from "framer-motion";
-import { Parallax } from "react-scroll-parallax";
 
 export default function AboutSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
@@ -23,23 +22,22 @@ export default function AboutSection() {
         )}
       >
         <div className="grid md:grid-cols-5 gap-12 items-center">
-          <Parallax speed={-15} className="md:col-span-2 flex justify-center">
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Image
-                src={imagePortrait}
-                alt="Imagen de la artista"
-                width={400}
-                height={600}
-                className="object-contain"
-                data-ai-hint="illustrator portrait"
-              />
-            </motion.div>
-          </Parallax>
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="md:col-span-2 flex justify-center"
+          >
+            <Image
+              src={imagePortrait}
+              alt="Imagen de la artista"
+              width={400}
+              height={600}
+              className="object-contain"
+              data-ai-hint="illustrator portrait"
+            />
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 100 }}

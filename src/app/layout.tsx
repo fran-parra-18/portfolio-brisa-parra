@@ -3,7 +3,6 @@
 import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
-import { ParallaxProvider } from 'react-scroll-parallax';
 
 // This is a client component, so metadata is not exported
 // export const metadata: Metadata = {
@@ -25,10 +24,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-body antialiased">
-        <ParallaxProvider>
           {children}
           <Toaster />
-        </ParallaxProvider>
       </body>
     </html>
   );
