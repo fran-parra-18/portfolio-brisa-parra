@@ -48,16 +48,16 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
     )}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-5 gap-12 items-center">
-          <motion.div
-            className="md:col-span-2 space-y-6"
-             /*
+            {/*
               COMENTARIO DE ANIMACIÓN:
               'initial' define el estado inicial (invisible y a la izquierda).
               'animate' define el estado final cuando el proyecto está activo.
               'transition' controla la suavidad y duración del efecto.
               Puedes cambiar 'x: -100' a 'x: 100' para que entre desde la derecha,
               o usar 'y: -100' para que entre desde arriba.
-            */
+            */}
+          <motion.div
+            className="md:col-span-2 space-y-6"
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -66,15 +66,15 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
             <h2 className="text-4xl font-headline font-bold text-primary">{project.title}</h2>
             <p className="w-[65%]">{project.description}</p>
           </motion.div>
-           <motion.div
-            className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-[600px]"
-            /*
+           {/*
               COMENTARIO DE ANIMACIÓN:
               Esta es la animación para las imágenes.
               'initial' las coloca invisibles y a la derecha.
               'animate' las trae a su posición final cuando el proyecto está activo.
               Cambiando 'x: 100' a 'x: -100' harías que entren desde la izquierda.
-            */
+            */}
+           <motion.div
+            className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-[600px]"
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : 100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -144,10 +144,16 @@ export default function BrandingProjectsSection() {
   return (
     <section ref={sectionRef} className="relative h-[200vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
-        <div className="container mx-auto px-4 h-full relative">
+        <motion.div 
+            className="container mx-auto px-4 h-full relative"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+        >
             <ProjectContent id="impulso" isActive={activeProject === 'impulso'} />
             <ProjectContent id="zelda" isActive={activeProject === 'zelda'} />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
