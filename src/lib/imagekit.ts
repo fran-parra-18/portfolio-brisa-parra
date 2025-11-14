@@ -1,3 +1,4 @@
+
 'use server';
 
 import ImageKit from 'imagekit';
@@ -17,7 +18,8 @@ type Illustration = {
 export async function getImages(): Promise<Illustration[]> {
   try {
     const files = await imagekit.listFiles({
-      // You can add more options here, like path, tags, etc.
+      // Sort by creation date descending to get newest files first
+      sort: 'DESC_CREATED',
     });
 
     // We filter just for files, not folders
