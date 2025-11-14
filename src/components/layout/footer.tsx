@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="py-8 bg-background border-t">
+    <footer className="py-8 border-t">
       <div className="container mx-auto px-4 text-center">
         {/* 
           Puedes cambiar el tamaño del texto del pie de página aquí.

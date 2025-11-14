@@ -38,7 +38,7 @@ export default function GallerySection() {
       ref={ref}
       id="gallery"
       className={cn(
-        "min-h-screen flex flex-col justify-center bg-card transition-all duration-1000 ease-in-out py-24",
+        "min-h-screen flex flex-col justify-center transition-all duration-1000 ease-in-out py-24",
         inView ? "opacity-100" : "opacity-0"
       )}
     >

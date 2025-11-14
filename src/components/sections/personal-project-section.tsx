@@ -25,7 +25,7 @@ export default function PersonalProjectSection() {
       ref={ref}
       id="projects"
       className={cn(
-        "min-h-screen flex items-center justify-center bg-card transition-all duration-1000 ease-in-out transform",
+        "min-h-screen flex items-center justify-center transition-all duration-1000 ease-in-out transform",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       )}
     >
