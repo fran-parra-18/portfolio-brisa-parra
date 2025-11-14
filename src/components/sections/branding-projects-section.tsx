@@ -45,31 +45,33 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
       isActive ? "opacity-100" : "opacity-0 pointer-events-none"
     )}>
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+        <div className="grid md:grid-cols-5 gap-12 items-center">
+          <div className="md:col-span-2 space-y-6">
             {/* 
               Puedes cambiar el tamaño del texto "02. Diseño de marca" aquí.
               Usa clases como text-sm, text-base, etc.
-            */}
-            <p className="text-primary font-bold">02. Diseño de marca</p>
+            */}            
+            <h1 className="text-6xl text-primary font-bold">02.</h1>
+            <h1 className="text-6xl text-primary font-bold pb-10">Diseño de marca</h1>
             {/* 
               Puedes cambiar el tamaño del título del proyecto (ej. "Impulso Azul") aquí.
               Usa clases como text-3xl, text-4xl, text-5xl.
             */}
-            <h2 className="text-4xl font-headline font-bold">{project.title}</h2>
+            <h2 className="text-4xl font-headline font-bold text-primary">{project.title}</h2>
             {/* 
               Puedes cambiar el tamaño del párrafo de descripción aquí.
               Usa clases como text-sm, text-base, text-lg.
             */}
-            <p className="text-muted-foreground max-w-prose">{project.description}</p>
+            <p className="w-[65%]">{project.description}</p>
           </div>
-           <div className="grid grid-cols-2 grid-rows-2 gap-4 h-[500px]">
+           <div className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-[600px]">
             <div className="col-span-1 row-span-1 relative">
               <Image
                 key={project.images[0].id}
                 src={project.images[0].src}
                 alt={project.images[0].description}
-                fill
+                width={385}
+                height={308}
                 className="rounded-lg object-cover shadow-lg"
                 data-ai-hint={project.images[0].imageHint}
               />
@@ -79,7 +81,8 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
                 key={project.images[1].id}
                 src={project.images[1].src}
                 alt={project.images[1].description}
-                fill
+                width={428}
+                max-height={650}
                 className="rounded-lg object-cover shadow-lg"
                 data-ai-hint={project.images[1].imageHint}
               />
@@ -89,8 +92,9 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
                 key={project.images[2].id}
                 src={project.images[2].src}
                 alt={project.images[2].description}
-                fill
-                className="rounded-lg object-cover shadow-lg"
+                width={385}
+                  height={308}
+                className="rounded-lg object-cover shadow-lg mt-10"
                 data-ai-hint={project.images[2].imageHint}
               />
             </div>

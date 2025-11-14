@@ -39,7 +39,7 @@ export default function ContactSection() {
           Puedes cambiar el tamaño del título "Contactame" aquí.
           Usa clases como text-3xl, text-4xl, text-5xl.
         */}
-        <h2 className="text-4xl font-headline font-bold mb-12">
+        <h2 className="text-7xl text-primary font-headline font-bold mb-12">
           Contactame
         </h2>
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">

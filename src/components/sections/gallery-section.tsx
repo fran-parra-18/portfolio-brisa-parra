@@ -47,12 +47,7 @@ export default function GallerySection() {
           Puedes cambiar el tamaño del texto "03. Ilustraciones" aquí.
           Usa clases como text-sm, text-base, etc.
         */}
-        <p className="text-primary font-bold">03. Ilustraciones</p>
-        {/* 
-          Puedes cambiar el tamaño del título "Galería" aquí.
-          Usa clases como text-3xl, text-4xl, text-5xl.
-        */}
-        <h2 className="text-4xl font-headline font-bold">Galería</h2>
+        <h1 className="text-5xl text-primary font-bold ">Ilustraciones</h1>
       </div>
       <div className="w-full relative">
         <Carousel

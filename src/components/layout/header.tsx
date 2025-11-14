@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out",
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out text-primary",
         scrolled || isGalleryPage ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
       )}
     >

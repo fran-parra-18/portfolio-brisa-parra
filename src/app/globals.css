@@ -64,6 +64,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
   }
 }
 

@@ -3,6 +3,7 @@
 import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
+import backgroundImage from './assets/background.jpg';
 
 // This is a client component, so metadata is not exported
 // export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.cdnfonts.com/css/calmingly" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased">
+      <body 
+        className="font-body antialiased"
+        style={{ '--bg-image': `url(${backgroundImage.src})` } as React.CSSProperties}
+      >
           {children}
           <Toaster />
       </body>

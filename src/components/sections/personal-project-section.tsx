@@ -30,30 +30,33 @@ export default function PersonalProjectSection() {
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-5 gap-12 items-center">
           <div className={cn(
-              "space-y-6 transition-all duration-1000 ease-out",
+              "md:col-span-2 space-y-6 transition-all duration-1000 ease-out",
               inView ? "opacity-100 -translate-x-0" : "opacity-0 -translate-x-8"
             )}>
             {/* 
               Puedes cambiar el tamaño del texto "01. Proyecto personal" aquí.
               Usa clases como text-sm, text-base, etc.
             */}
-            <p className="text-primary font-bold">01. Proyecto personal</p>
+            <h1 className="text-6xl text-primary font-bold">01.</h1>
+            <h1 className="text-6xl text-primary font-bold pb-10">Proyecto personal</h1>
             {/* 
               Puedes cambiar el tamaño del título "Libro Álbum Mi yo vegetal" aquí.
               Usa clases como text-3xl, text-4xl, text-5xl.
             */}
-            <h2 className="text-4xl font-headline font-bold">Libro Álbum <br /> Mi yo vegetal</h2>
+            <h2 className="text-4xl font-headline font-bold">Libro Álbum <br /> 
+            <span className="text-primary">Mi yo vegetal</span></h2>
+
             {/* 
               Puedes cambiar el tamaño del párrafo de descripción aquí.
               Usa clases como text-sm, text-base, text-lg.
             */}
-            <p className="text-muted-foreground max-w-prose">
+            <p className="w-[65%]">
               Un concepto oral convertido en proyecto donde me encontré explorando mis raíces, mis abuelos y mi pedazo de campo. Este libro ilustrado busca reconectarme con ese universo del interior que es mi refugio y donde la soledad no se siente del todo.
             </p>
           </div>
-          <div className="grid grid-cols-2 grid-rows-2 gap-4">
+          <div className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4">
             {projectImages.slice(0, 4).map((image, index) => (
               <div
                 key={image.id}
@@ -66,9 +69,8 @@ export default function PersonalProjectSection() {
                 <Image
                   src={image.src}
                   alt={image.description}
-                  width={800}
-                  height={600}
-                  className="rounded-lg object-cover shadow-lg aspect-square"
+                  
+                  className="rounded-lg object-cover shadow-lg"
                   data-ai-hint={image.imageHint}
                 />
               </div>

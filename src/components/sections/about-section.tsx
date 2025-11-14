@@ -55,7 +55,7 @@ export default function AboutSection() {
               Puedes cambiar el tamaño del título "Sobre mí" aquí.
               Usa clases como text-3xl, text-4xl, text-5xl.
             */}
-            <h2 className="text-8xl font-headline font-bold mb-8">Sobre mí</h2>
+            <h2 className="text-8xl font-headline font-bold mb-8 text-primary">Sobre mí</h2>
             {/* 
               Puedes cambiar el tamaño de los párrafos de esta sección aquí.
               La clase 'text-lg' aplica a todos los <p> dentro de este div.
