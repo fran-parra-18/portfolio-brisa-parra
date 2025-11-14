@@ -45,7 +45,7 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
   
   return (
     <motion.div
-        className={cn("w-full",!isMobile && "absolute inset-0 flex flex-col justify-center")}
+        className={cn("w-full", !isMobile && "absolute inset-0 flex flex-col justify-center")}
         initial={{ opacity: 0 }}
         animate={{ opacity: isActive ? 1 : 0 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -169,18 +169,14 @@ export default function BrandingProjectsSection() {
       </div>
 
       {/* Desktop view: Sticky scroll */}
-      <motion.div
+      <div
         className="hidden md:sticky top-0 h-screen w-full overflow-hidden md:flex items-center"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8 }}
       >
         <div className="container mx-auto px-4 h-full relative">
             <ProjectContent id="impulso" isActive={activeProject === 'impulso'} />
             <ProjectContent id="zelda" isActive={activeProject === 'zelda'} />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
