@@ -28,17 +28,17 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out text-primary",
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out",
         scrolled || isGalleryPage ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-10">
+        <div className="flex items-center justify-between h-16">
           {/* 
             Puedes cambiar el tamaño del texto "Portfolio" aquí.
             Ej. text-xl, text-2xl, text-3xl
           */}
-          <Link href="/" className="text-2xl font-bold font-headline transition-colors duration-300 hover:text-primary">
+          <Link href="/" className="text-2xl font-bold font-headline transition-colors duration-300 text-primary hover:text-primary/80">
             Portfolio
           </Link>
           {!isGalleryPage && (
@@ -52,7 +52,7 @@ export default function Header() {
                     */}
                     <Link
                       href={item.href}
-                      className="text-sm font-medium transition-colors duration-300 hover:text-primary"
+                      className="text-sm font-medium text-foreground/80 transition-colors duration-300 hover:text-primary"
                     >
                       {item.label}
                     </Link>
