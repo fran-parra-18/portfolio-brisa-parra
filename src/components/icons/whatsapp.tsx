@@ -1,23 +1,12 @@
-import * as React from "react";
-import { SVGProps } from "react";
-
-const WhatsAppIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    <path d="M14.05 2.9A10.43 10.43 0 0 1 21.1 9.95" />
-    <path d="M14.05 6.4A6 6 0 0 1 17.6 9.95" />
-  </svg>
-);
-
-export default WhatsAppIcon;
+export default function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M16.75 13.96c.27.13.42.43.3.72-.21.5-1.03 1.1-1.4.93-.24-.11-1.03-.45-1.93-1.28-.9-.83-1.5-1.85-1.63-2.12-.13-.27-.03-.42.08-.55.1-.12.24-.28.36-.4.12-.13.16-.21.24-.36s.08-.27.04-.39-.42-1.02-.58-1.4c-.16-.36-.33-.3-.45-.3-.12 0-1.08.38-1.35.65-.27.27-.47.6-.47 1.25s.5 2.13 1.03 2.92c.53.8 1.4 1.87 3.17 2.65 1.77.78 2.05.65 2.4.6.35-.05.95-.38 1.12-.75.17-.37.17-.7.12-.75-.05-.05-.16-.1-1.03-.53zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+    </svg>
+  );
+}
