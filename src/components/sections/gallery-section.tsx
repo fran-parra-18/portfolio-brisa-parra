@@ -65,7 +65,7 @@ export default function GallerySection() {
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {galleryImages.slice(0, 12).map((image) => (
+            {galleryImages.slice(0, 5).map((image) => (
               <CarouselItem key={image.id} className="pl-4 basis-auto">
                 <div className="relative w-64 h-96"> 
                   <Image

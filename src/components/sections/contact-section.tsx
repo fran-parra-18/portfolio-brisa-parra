@@ -2,16 +2,15 @@
 
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import InstagramIcon from "@/components/icons/InstagramIcon";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
-import MailIcon from "@/components/icons/MailIcon";
-
+import InstagramIcon from "../../app/assets/icons/instagram.svg";
+import WhatsAppIcon from "../../app/assets/icons/whatsapp.svg";
+import MailIcon from "../../app/assets/icons/mail.svg";
 
 const contactLinks = [
   {
-    href: "#",
+    href: "https://www.instagram.com/brisa.ilus/",
     icon: InstagramIcon,
-    label: "Instagram",
+    label: "@brisa.ilus",
   },
   {
     href: "#",
@@ -19,9 +18,10 @@ const contactLinks = [
     label: "WhatsApp",
   },
   {
-    href: "#",
+    href: null,
     icon: MailIcon,
     label: "Correo electrónico",
+    clickable: false, // 👈 ESTE NO SE CLICKEA
   },
 ];
 
@@ -48,24 +48,23 @@ export default function ContactSection() {
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
           {contactLinks.map((link, index) => (
             <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                "group flex items-center gap-3 text-lg transition-all duration-700 ease-out",
-                inView ? "opacity-100 scale-100" : "opacity-0 scale-90"
-              )}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <link.icon className="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110" />
-              {/* 
-                Puedes cambiar el tamaño del texto de los enlaces de contacto (Instagram, WhatsApp, etc.) aquí.
-                Actualmente está en 'text-lg'. Puedes cambiarlo a text-base, text-xl, etc.
-                La clase está en el elemento <a> padre, unas líneas más arriba.
-              */}
-              <span className="transition-colors duration-300 group-hover:text-primary">{link.label}</span>
-            </a>
+            key={link.label}
+            href={link.href}            
+            className={cn(
+              "group flex items-center gap-3 text-lg transition-all duration-700 ease-out",
+              inView ? "opacity-100 scale-100" : "opacity-0 scale-90"
+            )}
+            style={{ transitionDelay: `${index * 150}ms` }}
+          >
+            <img
+              src={link.icon.src}
+              alt={link.label}
+              className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="transition-colors duration-300 group-hover:text-primary">
+              {link.label}
+            </span>
+          </a>
           ))}
         </div>
       </div>
