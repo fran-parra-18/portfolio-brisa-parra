@@ -92,11 +92,11 @@ export default function GalleryPage() {
               src={selectedImage.imageUrl}
               alt={selectedImage.description}
               fill
-              className="object-contain rounded-lg shadow-2xl"
+              className="object-contain rounded-lg"
             />
              <button
               onClick={closeModal}
-              className="absolute -top-4 -right-4 z-10 bg-card rounded-full p-2 text-foreground/80 hover:text-foreground hover:bg-card/90 transition-all"
+              className="absolute -top-4 -right-4 z-10 bg-primary text-primary-foreground rounded-full p-2 transition-all hover:bg-primary/90"
             >
               <X className="w-6 h-6" />
               <span className="sr-only">Cerrar</span>
