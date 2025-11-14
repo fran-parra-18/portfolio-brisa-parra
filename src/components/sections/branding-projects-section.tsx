@@ -39,44 +39,28 @@ const projects = {
   },
 };
 
-const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: boolean }) => {
+const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "zelda", isActive: boolean, isMobile?: boolean }) => {
   const project = projects[id];
   return (
     <motion.div 
-        className="absolute inset-0 flex flex-col justify-center"
+        className={cn(!isMobile && "absolute inset-0 flex flex-col justify-center")}
         initial={{ opacity: 0 }}
         animate={{ opacity: isActive ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        // The whileInView on the parent div handles the initial animation for mobile.
-        // For desktop, the parent sticky container handles it.
+        viewport={{ once: true, amount: 0.2 }}
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
-            {/*
-              COMENTARIO DE ANIMACIÓN:
-              'initial' define el estado inicial (invisible y a la izquierda).
-              'animate' define el estado final cuando el proyecto está activo.
-              'transition' controla la suavidad y duración del efecto.
-              Puedes cambiar 'x: -100' a 'x: 100' para que entre desde la derecha,
-              o usar 'y: -100' para que entre desde arriba.
-            */}
           <motion.div
             className="md:col-span-2 space-y-6 order-2 md:order-1 text-center md:text-left"
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
-            <h1 className="text-4xl md:text-6xl text-primary font-bold pb-4 md:pb-10">Diseño de marca</h1>
+            {!isMobile && <h1 className="text-4xl md:text-6xl text-primary font-bold pb-4 md:pb-10">Diseño de marca</h1>}
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">{project.title}</h2>
             <p className="text-base max-w-md mx-auto md:mx-0 md:w-[85%]">{project.description}</p>
           </motion.div>
-           {/*
-              COMENTARIO DE ANIMACIÓN:
-              Esta es la animación para las imágenes.
-              'initial' las coloca invisibles y a la derecha.
-              'animate' las trae a su posición final cuando el proyecto está activo.
-              Cambiando 'x: 100' a 'x: -100' harías que entren desde la izquierda.
-            */}
            <motion.div
             className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-auto md:h-[600px] order-1 md:order-2"
             initial={{ opacity: 0, x: 100 }}
@@ -123,6 +107,7 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
   );
 };
 
+
 export default function BrandingProjectsSection() {
   const [activeProject, setActiveProject] = useState<"impulso" | "zelda">("impulso");
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -151,13 +136,18 @@ export default function BrandingProjectsSection() {
   return (
     <section ref={sectionRef} className="relative h-auto md:h-[200vh] py-16 md:py-0">
       {/* Mobile view: Stacked projects */}
-      <div className="md:hidden space-y-24">
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.8 }} className="relative h-[90vh]">
-          <ProjectContent id="impulso" isActive={true} />
-        </motion.div>
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.8 }} className="relative h-[90vh]">
-          <ProjectContent id="zelda" isActive={true} />
-        </motion.div>
+      <div className="md:hidden container mx-auto px-4 space-y-16">
+        <motion.h1 
+          className="text-4xl text-primary font-bold text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8 }}
+        >
+          Diseño de marca
+        </motion.h1>
+        <ProjectContent id="impulso" isActive={true} isMobile={true} />
+        <ProjectContent id="zelda" isActive={true} isMobile={true} />
       </div>
 
       {/* Desktop view: Sticky scroll */}
