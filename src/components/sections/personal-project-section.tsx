@@ -38,8 +38,7 @@ export default function PersonalProjectSection() {
             {/* 
               Puedes cambiar el tamaño del texto "01. Proyecto personal" aquí.
               Usa clases como text-sm, text-base, etc.
-            */}
-            <h1 className="text-6xl text-primary font-bold">01.</h1>
+            */}            
             <h1 className="text-6xl text-primary font-bold pb-10">Proyecto personal</h1>
             {/* 
               Puedes cambiar el tamaño del título "Libro Álbum Mi yo vegetal" aquí.

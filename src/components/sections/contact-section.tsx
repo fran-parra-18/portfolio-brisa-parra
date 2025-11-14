@@ -2,7 +2,7 @@
 
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { Instagram, MessageCircle, Mail } from "lucide-react";
+import { Instagram, MessageSquare, Mail } from "lucide-react";
 
 const contactLinks = [
   {
@@ -12,7 +12,7 @@ const contactLinks = [
   },
   {
     href: "#",
-    icon: MessageCircle,
+    icon: MessageSquare,
     label: "WhatsApp",
   },
   {

@@ -51,7 +51,7 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
               Puedes cambiar el tamaño del texto "02. Diseño de marca" aquí.
               Usa clases como text-sm, text-base, etc.
             */}            
-            <h1 className="text-6xl text-primary font-bold">02.</h1>
+            
             <h1 className="text-6xl text-primary font-bold pb-10">Diseño de marca</h1>
             {/* 
               Puedes cambiar el tamaño del título del proyecto (ej. "Impulso Azul") aquí.
