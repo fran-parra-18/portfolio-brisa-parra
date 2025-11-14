@@ -42,6 +42,7 @@ const projects = {
 
 const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "zelda", isActive: boolean, isMobile?: boolean }) => {
   const project = projects[id];
+  
   return (
     <motion.div
         className={cn(!isMobile && "absolute inset-0 flex flex-col justify-center")}
@@ -53,6 +54,13 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
+          {/*
+            El `motion.div` del texto ahora usa `whileInView` para la animación de entrada
+            y `animate` para las transiciones entre proyectos en la vista de escritorio.
+            `isMobile ? 0 : ...` asegura que no haya movimiento horizontal en móviles.
+            En `x: -100` (deslizamiento desde la izquierda), puedes cambiar el valor para ajustar la distancia.
+            `duration` controla la velocidad de la animación.
+          */}
           <motion.div
             className="md:col-span-2 space-y-6 text-center md:text-left"
             initial={{ opacity: 0, x: isMobile ? 0 : -100 }}
@@ -64,12 +72,13 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">{project.title}</h2>
             <p className="text-base max-w-md mx-auto md:mx-0 md:w-[85%]">{project.description}</p>
           </motion.div>
+          {/*
+            El `motion.div` de las imágenes funciona igual que el del texto, pero con `x: 100` para entrar desde la derecha.
+          */}
            <motion.div
               className={cn(
                 "md:col-span-3",
-                isMobile 
-                  ? "w-full" 
-                  : "grid grid-cols-2 grid-rows-2 gap-4 h-[600px]"
+                !isMobile && "grid grid-cols-2 grid-rows-2 gap-4 h-[600px]"
               )}
               initial={{ opacity: 0, x: isMobile ? 0 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}
