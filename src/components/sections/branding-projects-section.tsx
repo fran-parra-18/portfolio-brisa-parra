@@ -1,9 +1,10 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import impulso1 from "@/app/assets/section2/1.jpg";
 import impulso2 from "@/app/assets/section2/3.jpg";
@@ -49,29 +50,31 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
         <div className="grid md:grid-cols-5 gap-12 items-center">
           <motion.div
             className="md:col-span-2 space-y-6"
+             /*
+              COMENTARIO DE ANIMACIÓN:
+              'initial' define el estado inicial (invisible y a la izquierda).
+              'animate' define el estado final cuando el proyecto está activo.
+              'transition' controla la suavidad y duración del efecto.
+              Puedes cambiar 'x: -100' a 'x: 100' para que entre desde la derecha,
+              o usar 'y: -100' para que entre desde arriba.
+            */
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
-            {/* 
-              Puedes cambiar el tamaño del texto "02. Diseño de marca" aquí.
-              Usa clases como text-sm, text-base, etc.
-            */}            
-            
             <h1 className="text-6xl text-primary font-bold pb-10">Diseño de marca</h1>
-            {/* 
-              Puedes cambiar el tamaño del título del proyecto (ej. "Impulso Azul") aquí.
-              Usa clases como text-3xl, text-4xl, text-5xl.
-            */}
             <h2 className="text-4xl font-headline font-bold text-primary">{project.title}</h2>
-            {/* 
-              Puedes cambiar el tamaño del párrafo de descripción aquí.
-              Usa clases como text-sm, text-base, text-lg.
-            */}
             <p className="w-[65%]">{project.description}</p>
           </motion.div>
            <motion.div
             className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-[600px]"
+            /*
+              COMENTARIO DE ANIMACIÓN:
+              Esta es la animación para las imágenes.
+              'initial' las coloca invisibles y a la derecha.
+              'animate' las trae a su posición final cuando el proyecto está activo.
+              Cambiando 'x: 100' a 'x: -100' harías que entren desde la izquierda.
+            */
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : 100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
