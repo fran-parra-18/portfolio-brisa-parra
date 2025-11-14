@@ -2,9 +2,10 @@
 
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import InstagramIcon from "@/components/icons/instagram";
-import WhatsAppIcon from "@/components/icons/whatsapp";
-import MailIcon from "@/components/icons/mail";
+import InstagramIcon from "@/components/icons/InstagramIcon";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import MailIcon from "@/components/icons/MailIcon";
+
 
 const contactLinks = [
   {
