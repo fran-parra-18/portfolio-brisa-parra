@@ -87,6 +87,20 @@ export default function GalleryPage() {
           className="fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in-0"
           onClick={closeModal}
         >
+          {/*
+            COMENTARIO DE POSICIÓN:
+            Este botón tiene posición 'fixed' para que esté siempre relativo a la ventana del navegador.
+            - `top-4 right-4`: Lo ubica en la esquina superior derecha con un pequeño margen.
+            - `top-0 right-0`: Lo pegaría exactamente a los bordes de la esquina.
+            - Puedes cambiar 'top' y 'right' por 'bottom' y 'left' para moverlo a otras esquinas.
+          */}
+          <button
+            onClick={closeModal}
+            className="fixed top-4 right-4 z-[60] bg-primary text-primary-foreground rounded-full p-2 transition-all hover:bg-primary/90"
+          >
+            <X className="w-6 h-6" />
+            <span className="sr-only">Cerrar</span>
+          </button>
           <div className="relative max-w-4xl max-h-[90vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
             <Image
               src={selectedImage.imageUrl}
@@ -94,21 +108,6 @@ export default function GalleryPage() {
               fill
               className="object-contain rounded-lg"
             />
-            {/*
-              COMENTARIO DE POSICIÓN:
-              Puedes ajustar la posición del botón de cierre (X) aquí.
-              - `top-2 right-2`: Lo ubica dentro de la esquina superior derecha.
-              - `top-0 right-0`: Lo pega exactamente al borde.
-              - `-top-4 -right-4`: Lo saca del marco de la imagen.
-              Puedes usar valores diferentes (ej. `top-8`, `right-8`) para moverlo más.
-            */}
-            <button
-              onClick={closeModal}
-              className="absolute top-2 right-2 z-10 bg-primary text-primary-foreground rounded-full p-2 transition-all hover:bg-primary/90"
-            >
-              <X className="w-6 h-6" />
-              <span className="sr-only">Cerrar</span>
-            </button>
           </div>
         </div>
       )}
