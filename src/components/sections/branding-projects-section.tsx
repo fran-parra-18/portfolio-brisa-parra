@@ -173,7 +173,7 @@ export default function BrandingProjectsSection() {
       </div>
 
       {/* --- Desktop View (Sticky Scroll) --- */}
-      <div className="hidden md:sticky top-0 h-screen w-full overflow-hidden">
+      <div className="hidden md:block sticky top-0 h-screen w-full overflow-hidden">
         <div className="container mx-auto px-4 h-full relative">
             <ProjectContent id="impulso" isActive={activeProject === 'impulso'} />
             <ProjectContent id="zelda" isActive={activeProject === 'zelda'} />
