@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -55,6 +53,8 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
           <motion.div
             className="md:col-span-2 space-y-6 text-center md:text-left"
             initial={{ opacity: 0, x: -100 }}
+            // Si quieres personalizar la animación de entrada, puedes hacerlo aquí.
+            // Por ejemplo, para que el texto entre desde la izquierda (`x: -100`) y las fotos desde la derecha (`x: 100`).
             animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
@@ -63,11 +63,10 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
             <p className="text-base max-w-md mx-auto md:mx-0 md:w-[85%]">{project.description}</p>
           </motion.div>
            <motion.div
-              className={cn(
-                "md:col-span-3",
-                !isMobile && "grid grid-cols-2 grid-rows-2 gap-4 h-[600px]"
-              )}
+              className="md:col-span-3"
               initial={{ opacity: 0, x: 100 }}
+              // Ajusta la `x` para cambiar la dirección (ej. `x: 100` desde la derecha).
+              // `duration` controla la velocidad y `delay` añade un retardo.
               animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : 100 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
            >
@@ -83,7 +82,7 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
                 />
               </div>
             ) : (
-              <>
+               <div className="grid grid-cols-2 grid-rows-2 gap-4 h-[600px]">
                 <div className="col-span-1 row-span-1 relative">
                   <Image
                     key={project.images[0].id}
@@ -117,7 +116,7 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
                     data-ai-hint={project.images[2].imageHint}
                   />
                 </div>
-              </>
+              </div>
             )}
           </motion.div>
         </div>
