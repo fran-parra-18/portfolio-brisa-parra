@@ -45,46 +45,31 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
   
   return (
     <motion.div
-        className={cn(!isMobile && "absolute inset-0 flex flex-col justify-center")}
+        className={cn("w-full",!isMobile && "absolute inset-0 flex flex-col justify-center")}
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
         animate={{ opacity: isActive ? 1 : 0 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
-          {/*
-            El `motion.div` del texto ahora usa `whileInView` para la animación de entrada
-            y `animate` para las transiciones entre proyectos en la vista de escritorio.
-            `isMobile ? 0 : ...` asegura que no haya movimiento horizontal en móviles.
-            En `x: -100` (deslizamiento desde la izquierda), puedes cambiar el valor para ajustar la distancia.
-            `duration` controla la velocidad de la animación.
-          */}
           <motion.div
             className="md:col-span-2 space-y-6 text-center md:text-left"
-            initial={{ opacity: 0, x: isMobile ? 0 : -100 }}
-            animate={{ opacity: isActive ? 1 : 0, x: isMobile ? 0 : (isActive ? 0 : -100) }}
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            viewport={{ once: true }}
           >
             {!isMobile && <h1 className="text-4xl md:text-6xl text-primary font-bold pb-4 md:pb-10">Diseño de marca</h1>}
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">{project.title}</h2>
             <p className="text-base max-w-md mx-auto md:mx-0 md:w-[85%]">{project.description}</p>
           </motion.div>
-          {/*
-            El `motion.div` de las imágenes funciona igual que el del texto, pero con `x: 100` para entrar desde la derecha.
-          */}
            <motion.div
               className={cn(
                 "md:col-span-3",
                 !isMobile && "grid grid-cols-2 grid-rows-2 gap-4 h-[600px]"
               )}
-              initial={{ opacity: 0, x: isMobile ? 0 : 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              animate={{ opacity: isActive ? 1 : 0, x: isMobile ? 0 : (isActive ? 0 : 100) }}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : 100 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              viewport={{ once: true }}
            >
             {isMobile ? (
               <div className="relative w-full aspect-[4/3]">
@@ -99,14 +84,14 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
               </div>
             ) : (
               <>
-                <div className="col-span-1 row-span-1 relative aspect-[4/3] md:aspect-auto">
+                <div className="col-span-1 row-span-1 relative">
                   <Image
                     key={project.images[0].id}
                     src={project.images[0].src}
                     alt={project.images[0].description}
                     width={385}
                     height={308}
-                    className="rounded-lg object-cover shadow-lg"
+                    className="rounded-lg object-cover shadow-lg w-full h-full"
                     data-ai-hint={project.images[0].imageHint}
                   />
                 </div>
@@ -117,18 +102,18 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
                     alt={project.images[1].description}
                     width={428}
                     height={650}
-                    className="rounded-lg object-cover shadow-lg"
+                    className="rounded-lg object-cover shadow-lg w-full h-full"
                     data-ai-hint={project.images[1].imageHint}
                   />
                 </div>
-                <div className="col-span-1 row-span-1 relative aspect-[4/3] md:aspect-auto">
+                <div className="col-span-1 row-span-1 relative">
                   <Image
                     key={project.images[2].id}
                     src={project.images[2].src}
                     alt={project.images[2].description}
                     width={385}
                     height={308}
-                    className="rounded-lg object-cover shadow-lg mt-10"
+                    className="rounded-lg object-cover shadow-lg mt-10 w-full h-full"
                     data-ai-hint={project.images[2].imageHint}
                   />
                 </div>
@@ -147,7 +132,6 @@ export default function BrandingProjectsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Disable scroll-based project switching on mobile
     if (window.innerWidth < 768) return;
 
     const handleScroll = () => {
@@ -168,7 +152,7 @@ export default function BrandingProjectsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-auto md:h-[200vh] py-16 md:py-0">
+    <section ref={sectionRef} id="branding-projects" className="relative h-auto md:h-[200vh] py-16 md:py-0 overflow-hidden">
       {/* Mobile view: Stacked projects */}
       <div className="md:hidden container mx-auto px-4 space-y-16">
         <motion.h1 
