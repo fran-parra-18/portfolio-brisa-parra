@@ -45,9 +45,10 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
     <motion.div 
         className="absolute inset-0 flex flex-col justify-center"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8 }}
+        animate={{ opacity: isActive ? 1 : 0 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        // The whileInView on the parent div handles the initial animation for mobile.
+        // For desktop, the parent sticky container handles it.
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
@@ -148,17 +149,27 @@ export default function BrandingProjectsSection() {
     <section ref={sectionRef} className="relative h-auto md:h-[200vh] py-16 md:py-0">
       {/* Mobile view: Stacked projects */}
       <div className="md:hidden space-y-24">
-        <ProjectContent id="impulso" isActive={true} />
-        <ProjectContent id="zelda" isActive={true} />
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.8 }} className="relative h-[90vh]">
+          <ProjectContent id="impulso" isActive={true} />
+        </motion.div>
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.8 }} className="relative h-[90vh]">
+          <ProjectContent id="zelda" isActive={true} />
+        </motion.div>
       </div>
 
       {/* Desktop view: Sticky scroll */}
-      <div className="hidden md:sticky top-0 h-screen w-full overflow-hidden md:flex items-center">
+      <motion.div
+        className="hidden md:sticky top-0 h-screen w-full overflow-hidden md:flex items-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container mx-auto px-4 h-full relative">
             <ProjectContent id="impulso" isActive={activeProject === 'impulso'} />
             <ProjectContent id="zelda" isActive={activeProject === 'zelda'} />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
