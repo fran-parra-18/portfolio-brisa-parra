@@ -88,7 +88,8 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
                 key={project.images[0].id}
                 src={project.images[0].src}
                 alt={project.images[0].description}
-                fill
+                width={385}
+                height={308}
                 className="rounded-lg object-cover shadow-lg"
                 data-ai-hint={project.images[0].imageHint}
               />
@@ -98,7 +99,8 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
                 key={project.images[1].id}
                 src={project.images[1].src}
                 alt={project.images[1].description}
-                fill
+                width={428}
+                max-height={650}
                 className="rounded-lg object-cover shadow-lg"
                 data-ai-hint={project.images[1].imageHint}
               />
@@ -108,8 +110,9 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
                 key={project.images[2].id}
                 src={project.images[2].src}
                 alt={project.images[2].description}
-                fill
-                className="rounded-lg object-cover shadow-lg mt-0 md:mt-10"
+                width={385}
+                height={308}
+                className="rounded-lg object-cover shadow-lg mt-10"
                 data-ai-hint={project.images[2].imageHint}
               />
             </div>
