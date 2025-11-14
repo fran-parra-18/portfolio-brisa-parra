@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 import impulso1 from "@/app/assets/section2/1.jpg";
 import impulso2 from "@/app/assets/section2/3.jpg";
@@ -41,12 +42,17 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
   const project = projects[id];
   return (
     <div className={cn(
-      "absolute inset-0 transition-opacity duration-700 ease-in-out flex flex-col justify-center",
-      isActive ? "opacity-100" : "opacity-0 pointer-events-none"
+      "absolute inset-0 flex flex-col justify-center",
+      isActive ? "z-10" : "z-0"
     )}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-5 gap-12 items-center">
-          <div className="md:col-span-2 space-y-6">
+          <motion.div
+            className="md:col-span-2 space-y-6"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -100 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
             {/* 
               Puedes cambiar el tamaño del texto "02. Diseño de marca" aquí.
               Usa clases como text-sm, text-base, etc.
@@ -63,8 +69,13 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
               Usa clases como text-sm, text-base, text-lg.
             */}
             <p className="w-[65%]">{project.description}</p>
-          </div>
-           <div className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-[600px]">
+          </motion.div>
+           <motion.div
+            className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-[600px]"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : 100 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+           >
             <div className="col-span-1 row-span-1 relative">
               <Image
                 key={project.images[0].id}
@@ -98,7 +109,7 @@ const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: b
                 data-ai-hint={project.images[2].imageHint}
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
@@ -131,8 +142,8 @@ export default function BrandingProjectsSection() {
     <section ref={sectionRef} className="relative h-[200vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
         <div className="container mx-auto px-4 h-full relative">
-          <ProjectContent id="impulso" isActive={activeProject === 'impulso'} />
-          <ProjectContent id="zelda" isActive={activeProject === 'zelda'} />
+            <ProjectContent id="impulso" isActive={activeProject === 'impulso'} />
+            <ProjectContent id="zelda" isActive={activeProject === 'zelda'} />
         </div>
       </div>
     </section>
