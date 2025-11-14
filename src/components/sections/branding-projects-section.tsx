@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -38,86 +39,66 @@ const projects = {
   },
 };
 
-const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "zelda", isActive: boolean, isMobile?: boolean }) => {
+const ProjectContent = ({ id, isActive }: { id: "impulso" | "zelda", isActive: boolean }) => {
   const project = projects[id];
-  
   return (
     <motion.div
-        className={cn("w-full", !isMobile && "absolute inset-0 flex flex-col justify-center")}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isActive ? 1 : 0 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="absolute inset-0 flex flex-col justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isActive ? 1 : 0 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
           <motion.div
-            className="md:col-span-2 space-y-6 text-center md:text-left"
+            className="md:col-span-2 space-y-6 md:order-1 text-center md:text-left"
             initial={{ opacity: 0, x: -100 }}
-            // Si quieres personalizar la animación de entrada, puedes hacerlo aquí.
-            // Por ejemplo, para que el texto entre desde la izquierda (`x: -100`) y las fotos desde la derecha (`x: 100`).
             animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
-            {!isMobile && <h1 className="text-4xl md:text-6xl text-primary font-bold pb-4 md:pb-10">Diseño de marca</h1>}
+            <h1 className="text-4xl md:text-6xl text-primary font-bold pb-4 md:pb-10">Diseño de marca</h1>
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">{project.title}</h2>
             <p className="text-base max-w-md mx-auto md:mx-0 md:w-[85%]">{project.description}</p>
           </motion.div>
            <motion.div
-              className="md:col-span-3"
-              initial={{ opacity: 0, x: 100 }}
-              // Ajusta la `x` para cambiar la dirección (ej. `x: 100` desde la derecha).
-              // `duration` controla la velocidad y `delay` añade un retardo.
-              animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : 100 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-auto md:h-[600px] md:order-2"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : 100 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
            >
-            {isMobile ? (
-              <div className="relative w-full aspect-[4/3]">
-                <Image
-                  key={project.images[0].id}
-                  src={project.images[0].src}
-                  alt={project.images[0].description}
-                  fill
-                  className="rounded-lg object-cover shadow-lg"
-                  data-ai-hint={project.images[0].imageHint}
-                />
-              </div>
-            ) : (
-               <div className="grid grid-cols-2 grid-rows-2 gap-4 h-[600px]">
-                <div className="col-span-1 row-span-1 relative">
-                  <Image
-                    key={project.images[0].id}
-                    src={project.images[0].src}
-                    alt={project.images[0].description}
-                    width={385}
-                    height={308}
-                    className="rounded-lg object-cover shadow-lg w-full h-full"
-                    data-ai-hint={project.images[0].imageHint}
-                  />
-                </div>
-                <div className="col-span-1 row-span-2 relative">
-                  <Image
-                    key={project.images[1].id}
-                    src={project.images[1].src}
-                    alt={project.images[1].description}
-                    width={428}
-                    height={650}
-                    className="rounded-lg object-cover shadow-lg w-full h-full"
-                    data-ai-hint={project.images[1].imageHint}
-                  />
-                </div>
-                <div className="col-span-1 row-span-1 relative">
-                  <Image
-                    key={project.images[2].id}
-                    src={project.images[2].src}
-                    alt={project.images[2].description}
-                    width={385}
-                    height={308}
-                    className="rounded-lg object-cover shadow-lg mt-10 w-full h-full"
-                    data-ai-hint={project.images[2].imageHint}
-                  />
-                </div>
-              </div>
-            )}
+            <div className="col-span-1 row-span-1 relative aspect-[4/3] md:aspect-auto">
+              <Image
+                key={project.images[0].id}
+                src={project.images[0].src}
+                alt={project.images[0].description}
+                width={385}
+                height={308}
+                className="rounded-lg object-cover shadow-lg"
+                data-ai-hint={project.images[0].imageHint}
+              />
+            </div>
+            <div className="col-span-1 row-span-2 relative">
+              <Image
+                key={project.images[1].id}
+                src={project.images[1].src}
+                alt={project.images[1].description}
+                width={428}
+                height={650}
+                className="rounded-lg object-cover shadow-lg"
+                data-ai-hint={project.images[1].imageHint}
+              />
+            </div>
+            <div className="col-span-1 row-span-1 relative aspect-[4/3] md:aspect-auto">
+               <Image
+                key={project.images[2].id}
+                src={project.images[2].src}
+                alt={project.images[2].description}
+                width={385}
+                height={308}
+                className="rounded-lg object-cover shadow-lg mt-10"
+                data-ai-hint={project.images[2].imageHint}
+              />
+            </div>
           </motion.div>
         </div>
       </div>
@@ -131,19 +112,19 @@ export default function BrandingProjectsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.innerWidth < 768) return;
-
     const handleScroll = () => {
-      const { current } = sectionRef;
-      if (!current) return;
+        if (window.innerWidth < 768) return;
 
-      const { top, height } = current.getBoundingClientRect();
-      const scrollableHeight = height - window.innerHeight;
-      const scrollAmount = -top;
-      
-      const scrollPercent = Math.max(0, Math.min(1, scrollAmount / scrollableHeight));
-      
-      setActiveProject(scrollPercent > 0.5 ? "zelda" : "impulso");
+        const { current } = sectionRef;
+        if (!current) return;
+
+        const { top, height } = current.getBoundingClientRect();
+        const scrollableHeight = height - window.innerHeight;
+        const scrollAmount = -top;
+        
+        const scrollPercent = Math.max(0, Math.min(1, scrollAmount / scrollableHeight));
+        
+        setActiveProject(scrollPercent > 0.5 ? "zelda" : "impulso");
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -151,26 +132,48 @@ export default function BrandingProjectsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="branding-projects" className="relative h-auto md:h-[200vh] py-16 md:py-0 overflow-hidden">
-      {/* Mobile view: Stacked projects */}
+    <section ref={sectionRef} className="relative h-auto md:h-[200vh] py-16 md:py-0">
+      {/* --- Mobile View --- */}
       <div className="md:hidden container mx-auto px-4 space-y-16">
-        <motion.h1 
-          className="text-4xl text-primary font-bold text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.8 }}
-        >
+        <h1 className="text-4xl text-primary font-bold text-center">
           Diseño de marca
-        </motion.h1>
-        <ProjectContent id="impulso" isActive={true} isMobile={true} />
-        <ProjectContent id="zelda" isActive={true} isMobile={true} />
+        </h1>
+        {/* Project 1: Impulso */}
+        <div className="space-y-6">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-headline font-bold text-primary">{projects.impulso.title}</h2>
+            <p className="text-base max-w-md mx-auto">{projects.impulso.description}</p>
+          </div>
+          <div className="relative w-full aspect-square">
+            <Image
+                src={projects.impulso.images[0].src}
+                alt={projects.impulso.images[0].description}
+                fill
+                className="rounded-lg object-cover shadow-lg"
+                data-ai-hint={projects.impulso.images[0].imageHint}
+              />
+          </div>
+        </div>
+        {/* Project 2: Zelda */}
+         <div className="space-y-6">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-headline font-bold text-primary">{projects.zelda.title}</h2>
+            <p className="text-base max-w-md mx-auto">{projects.zelda.description}</p>
+          </div>
+          <div className="relative w-full aspect-square">
+            <Image
+                src={projects.zelda.images[0].src}
+                alt={projects.zelda.images[0].description}
+                fill
+                className="rounded-lg object-cover shadow-lg"
+                data-ai-hint={projects.zelda.images[0].imageHint}
+              />
+          </div>
+        </div>
       </div>
 
-      {/* Desktop view: Sticky scroll */}
-      <div
-        className="hidden md:sticky top-0 h-screen w-full overflow-hidden md:flex items-center"
-      >
+      {/* --- Desktop View (Sticky Scroll) --- */}
+      <div className="hidden md:sticky top-0 h-screen w-full overflow-hidden">
         <div className="container mx-auto px-4 h-full relative">
             <ProjectContent id="impulso" isActive={activeProject === 'impulso'} />
             <ProjectContent id="zelda" isActive={activeProject === 'zelda'} />
