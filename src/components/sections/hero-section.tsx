@@ -11,7 +11,7 @@ export default function HeroSection() {
       ref={ref}
       id="home"
       className={cn(
-        "min-h-[100vh] flex items-center justify-center text-center transition-all duration-1000 ease-in-out",
+        "min-h-[100vh] flex items-center justify-center text-center transition-all duration-1000 ease-in-out px-4",
         inView ? "opacity-100" : "opacity-0"
       )}
     >
@@ -29,7 +29,7 @@ export default function HeroSection() {
           Usa clases como text-lg, text-xl, text-2xl.
           También puedes usar prefijos para diferentes tamaños de pantalla (ej. md:text-2xl).
         */}
-        <p className="text-xl md:text-2xl text-primary">
+        <p className="text-lg md:text-xl text-primary">
           – Ilustradora –
         </p>
       </div>

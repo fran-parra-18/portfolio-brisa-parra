@@ -38,16 +38,12 @@ export default function GallerySection() {
       ref={ref}
       id="gallery"
       className={cn(
-        "min-h-screen flex flex-col justify-center transition-all duration-1000 ease-in-out py-24",
+        "min-h-screen flex flex-col justify-center transition-all duration-1000 ease-in-out py-16 md:py-24",
         inView ? "opacity-100" : "opacity-0"
       )}
     >
       <div className="container mx-auto px-4 text-center mb-12">
-        {/* 
-          Puedes cambiar el tamaño del texto "03. Ilustraciones" aquí.
-          Usa clases como text-sm, text-base, etc.
-        */}
-        <h1 className="text-5xl text-primary font-bold ">Ilustraciones</h1>
+        <h1 className="text-4xl md:text-5xl text-primary font-bold ">Ilustraciones</h1>
       </div>
       <div className="w-full relative">
         <Carousel
@@ -64,10 +60,10 @@ export default function GallerySection() {
           ]}
           className="w-full"
         >
-          <CarouselContent className="-ml-4">
-            {galleryImages.slice(0, 10).map((image) => (
-              <CarouselItem key={image.id} className="pl-4 basis-auto">
-                <div className="relative w-64 h-96"> 
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {galleryImages.slice(0, 5).map((image) => (
+              <CarouselItem key={image.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-auto">
+                <div className="relative w-full aspect-[2/3] md:w-64 md:h-96"> 
                   <Image
                     src={image.imageUrl}
                     alt={image.description}
@@ -81,11 +77,6 @@ export default function GallerySection() {
         </Carousel>
       </div>
        <div className="container mx-auto px-4 text-center mt-12">
-          {/* 
-            Puedes cambiar el tamaño del texto del botón "Ver todas" aquí.
-            La clase 'size="lg"' afecta el padding y altura, pero puedes añadir
-            clases como 'text-base', 'text-lg' para el tamaño de la fuente.
-          */}
           <Link href="/gallery" passHref prefetch={false}>
             <Button variant="outline" size="lg">Ver todas</Button>
           </Link>

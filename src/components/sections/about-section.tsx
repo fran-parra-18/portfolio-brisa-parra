@@ -7,13 +7,13 @@ import imagePortrait from "../../app/assets/portrait.png";
 import { motion } from "framer-motion";
 
 export default function AboutSection() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
     <section
       ref={ref}
       id="about"
-      className="min-h-screen flex items-center justify-center overflow-hidden"
+      className="min-h-screen flex items-center justify-center overflow-hidden py-16 md:py-24"
     >
       <div
         className={cn(
@@ -21,56 +21,43 @@ export default function AboutSection() {
           inView ? "opacity-100" : "opacity-0"
         )}
       >
-        <div className="grid md:grid-cols-5 gap-12 items-center pl-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -100 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="md:col-span-2 flex justify-center"
+            className="flex justify-center"
           >
             <Image
               src={imagePortrait}
               alt="Imagen de la artista"
-              width={480}
-              height={720}
-              className="object-contain"
+              width={320}
+              height={480}
+              className="object-contain rounded-lg w-full max-w-xs md:max-w-sm lg:max-w-md"
               data-ai-hint="illustrator portrait"
             />
           </motion.div>
-
-          {/* 
-            Puedes controlar el ancho de este contenedor de texto de varias maneras:
-            1. Cambia 'md:col-span-3' a 'md:col-span-2' para que ocupe menos columnas en la rejilla.
-            2. Añade una clase de ancho máximo como 'max-w-2xl' para limitar su anchura máxima.
-          */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="md:col-span-2 space-y-6 text-lg"
+            className="space-y-6 text-center md:text-left"
           >
-            {/* 
-              Puedes cambiar el tamaño del título "Sobre mí" aquí.
-              Usa clases como text-3xl, text-4xl, text-5xl.
-            */}
-            <h2 className="text-8xl font-headline font-bold mb-8 text-primary">Sobre mí</h2>
-            {/* 
-              Puedes cambiar el tamaño de los párrafos de esta sección aquí.
-              La clase 'text-lg' aplica a todos los <p> dentro de este div.
-              Puedes cambiarla a text-base, text-xl, etc.
-            */}
-            <p className="max-w-prose">
-            Ilustradora de Benito Juárez, Buenos Aires.
-            </p>
-            <p className="max-w-prose">
-            Me inspiro en lo cotidiano: los viajes en colectivo, lo que me rodea, las pequeñas escenas de todos los días. Anoto ideas en el celular y las llevo al papel, primero en lápiz, luego, si lo pide la imagen, al plano digital.            </p>
-            <p className="max-w-prose">
-            Mis ilustraciones buscan generar cercanía, contar historias simples con sensibilidad. Me gusta trabajar con el cuerpo femenino y los entornos como recursos para crear climas y emociones.            </p>
-            <p className="max-w-prose font-semibold text-primary">
-            Bienvenidx a mi universo visual.
-            </p>
+            <h2 className="text-5xl md:text-6xl lg:text-8xl font-headline font-bold mb-8 text-primary">Sobre mí</h2>
+            <div className="text-base md:text-lg space-y-4">
+              <p className="max-w-prose mx-auto md:mx-0">
+              Ilustradora de Benito Juárez, Buenos Aires.
+              </p>
+              <p className="max-w-prose mx-auto md:mx-0">
+              Me inspiro en lo cotidiano: los viajes en colectivo, lo que me rodea, las pequeñas escenas de todos los días. Anoto ideas en el celular y las llevo al papel, primero en lápiz, luego, si lo pide la imagen, al plano digital.            </p>
+              <p className="max-w-prose mx-auto md:mx-0">
+              Mis ilustraciones buscan generar cercanía, contar historias simples con sensibilidad. Me gusta trabajar con el cuerpo femenino y los entornos como recursos para crear climas y emociones.            </p>
+              <p className="max-w-prose mx-auto md:mx-0 font-semibold text-primary">
+              Bienvenidx a mi universo visual.
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -25,37 +25,24 @@ export default function PersonalProjectSection() {
       ref={ref}
       id="projects"
       className={cn(
-        "min-h-screen flex items-center justify-center transition-all duration-1000 ease-in-out transform",
+        "min-h-screen flex items-center justify-center transition-all duration-1000 ease-in-out transform py-16 md:py-24",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-5 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
           <div className={cn(
-              "md:col-span-2 space-y-6 transition-all duration-1000 ease-out",
+              "md:col-span-2 space-y-6 transition-all duration-1000 ease-out text-center md:text-left",
               inView ? "opacity-100 -translate-x-0" : "opacity-0 -translate-x-8"
             )}>
-            {/* 
-              Puedes cambiar el tamaño del texto "01. Proyecto personal" aquí.
-              Usa clases como text-sm, text-base, etc.
-            */}            
-            <h1 className="text-6xl text-primary font-bold pb-10">Proyecto personal</h1>
-            {/* 
-              Puedes cambiar el tamaño del título "Libro Álbum Mi yo vegetal" aquí.
-              Usa clases como text-3xl, text-4xl, text-5xl.
-            */}
-            <h2 className="text-4xl font-headline font-bold">Libro Álbum <br /> 
+            <h1 className="text-4xl md:text-6xl text-primary font-bold pb-4 md:pb-10">Proyecto personal</h1>
+            <h2 className="text-3xl md:text-4xl font-headline font-bold">Libro Álbum <br className="hidden md:block" /> 
             <span className="text-primary">Mi yo vegetal</span></h2>
-
-            {/* 
-              Puedes cambiar el tamaño del párrafo de descripción aquí.
-              Usa clases como text-sm, text-base, text-lg.
-            */}
-            <p className="w-[65%]">
+            <p className="max-w-md mx-auto md:mx-0 text-base md:w-[85%]">
               Un concepto oral convertido en proyecto donde me encontré explorando mis raíces, mis abuelos y mi pedazo de campo. Este libro ilustrado busca reconectarme con ese universo del interior que es mi refugio y donde la soledad no se siente del todo.
             </p>
           </div>
-          <div className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4">
+          <div className="md:col-span-3 grid grid-cols-2 gap-4">
             {projectImages.slice(0, 4).map((image, index) => (
               <div
                 key={image.id}

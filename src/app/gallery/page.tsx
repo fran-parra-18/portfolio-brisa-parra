@@ -49,18 +49,13 @@ export default function GalleryPage() {
       <Header />
       <main className="flex-1 py-24">
         <div className="container mx-auto px-4">
-          {/* 
-            Puedes cambiar el tamaño del título "Galería Completa" aquí.
-            Usa clases como text-3xl, text-4xl, text-5xl.
-            También puedes usar prefijos para diferentes tamaños de pantalla (ej. md:text-5xl).
-          */}
-          <h1 className="text-4xl md:text-5xl font-bold font-headline tracking-tighter text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold font-headline tracking-tighter text-center mb-12 md:mb-16">
             Galería Completa
           </h1>
           {isLoading ? (
              <div className="text-center">Cargando imágenes...</div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {images.map((image) => (
                 <div
                   key={image.id}
