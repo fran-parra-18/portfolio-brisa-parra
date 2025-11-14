@@ -42,9 +42,10 @@ const projects = {
 const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "zelda", isActive: boolean, isMobile?: boolean }) => {
   const project = projects[id];
   return (
-    <motion.div 
+    <motion.div
         className={cn(!isMobile && "absolute inset-0 flex flex-col justify-center")}
         initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
         animate={{ opacity: isActive ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
         viewport={{ once: true, amount: 0.2 }}
@@ -52,7 +53,7 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
           <motion.div
-            className="md:col-span-2 space-y-6 order-2 md:order-1 text-center md:text-left"
+            className="md:col-span-2 space-y-6 md:order-1 text-center md:text-left"
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -62,7 +63,7 @@ const ProjectContent = ({ id, isActive, isMobile = false }: { id: "impulso" | "z
             <p className="text-base max-w-md mx-auto md:mx-0 md:w-[85%]">{project.description}</p>
           </motion.div>
            <motion.div
-            className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-auto md:h-[600px] order-1 md:order-2"
+            className="md:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-auto md:h-[600px] md:order-2"
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : 100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
